@@ -13,7 +13,7 @@ using EAS.Data.Linq;
 
 using Gas_test2.Entities;
 
-using Gas_test2.BLL; 
+using Gas_test2.BLL;
 
 namespace Gas_test2.WinUI.CtrlView
 {
@@ -41,7 +41,7 @@ namespace Gas_test2.WinUI.CtrlView
             label1.AutoSize = false;    //设置AutoSize         
             label1.Width = (int)(FontWidth * 10.0);          //设置显示宽度         
             label1.Height = RowHeight * ColNum;           //设置显示高度
-             */ 
+             */
         }
 
 
@@ -53,7 +53,7 @@ namespace Gas_test2.WinUI.CtrlView
         /// <param name="listbox">listbox名</param>
         private void FreshLbox(string cloum, string tab, string listbox)
         {
-            
+
             lbox_Ometer.Items.Clear();
             dataset.Clear();
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData(cloum, tab);
@@ -75,25 +75,27 @@ namespace Gas_test2.WinUI.CtrlView
                 dataset.Clear();
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData("GoEquipSlet", "GasometerName", lbox_Ometer.SelectedItem.ToString());
 
-                for (int i = 0; i < equipTypeNum; i++)
+                
+                    
+            foreach (DataRow dr in dataset.Tables[0].Rows)
+            {
+                DataSet PorC = ServiceContainer.GetService<IGasDAL>().QueryData("PorC", "EquipTypeSlet", "EquipName", dr["EquipName"].ToString());
+                if (PorC.Tables[0].Rows[0][0].ToString() == "True")
                 {
-                    int j = 0;
-                    foreach (DataRow dr in dataset.Tables[0].Rows)
-                    {
-                        if (dataset.Tables[0].Rows[j]["PorC"].ToString() == "True" && dataset.Tables[0].Rows[j]["EquipName"].ToString() == DG_In.Rows[i].Cells["设备名称"].Value.ToString())
-                        {
-                            DG_In.Rows[i].Cells[1].Value = 1;
-                            DG_In.Rows[i].Cells[2].Value = dataset.Tables[0].Rows[j]["GasPercent"];
-                        }
-                        else if (dataset.Tables[0].Rows[j]["PorC"].ToString() == "False" && dataset.Tables[0].Rows[j]["EquipName"].ToString() == DG_Out.Rows[i].Cells["设备名称"].Value.ToString())
-                        {
-                            DG_Out.Rows[i].Cells[1].Value = 1;
-                            DG_Out.Rows[i].Cells[2].Value = dataset.Tables[0].Rows[j]["GasPercent"];
-                        }
-                        j++;
-                    }
-
+                    //dr["PorC"].ToString() == "True" && dr["EquipName"].ToString() == DG_In.Rows[i].Cells["设备名称"].Value.ToString();
+                    //DG_In.Rows[i].Cells[1].Value = 1;
+                    //DG_In.Rows[i].Cells[2].Value = dr["GasPercent"];
                 }
+                else if (PorC.Tables[0].Rows[0][0].ToString() == "False")
+                {
+                    //dr["PorC"].ToString() == "False" && dr["EquipName"].ToString() == DG_Out.Rows[i].Cells["设备名称"].Value.ToString()
+                    //DG_Out.Rows[i].Cells[1].Value = 1;
+                    //DG_Out.Rows[i].Cells[2].Value = dr["GasPercent"];
+                }
+                        
+            }
+
+                
             }
 
 
@@ -104,16 +106,16 @@ namespace Gas_test2.WinUI.CtrlView
             DG_In.Rows.Clear();
             DG_Out.Rows.Clear();
             dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData( "EquipTypeSlet");
+            dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet");
             equipTypeNum = dataset.Tables[0].Rows.Count;
-            int j = 0;
+            
             foreach (DataRow dr in dataset.Tables[0].Rows)
             {
                 if (dr["PorC"].ToString() == "True")
                 {
                     DataGridViewRow row = new DataGridViewRow();
                     DataGridViewTextBoxCell textboxcell = new DataGridViewTextBoxCell();
-                    textboxcell.Value = dataset.Tables[0].Rows[j][0];
+                    textboxcell.Value = dr[0];
                     row.Cells.Add(textboxcell);
                     DataGridViewCheckBoxCell checkcell = new DataGridViewCheckBoxCell();
                     checkcell.Value = false;
@@ -126,7 +128,7 @@ namespace Gas_test2.WinUI.CtrlView
                 {
                     DataGridViewRow row2 = new DataGridViewRow();
                     DataGridViewTextBoxCell textboxcell2 = new DataGridViewTextBoxCell();
-                    textboxcell2.Value = dataset.Tables[0].Rows[j][0];
+                    textboxcell2.Value = dr[0];
                     row2.Cells.Add(textboxcell2);
                     DataGridViewCheckBoxCell checkcell2 = new DataGridViewCheckBoxCell();
                     checkcell2.Value = false;
@@ -142,7 +144,7 @@ namespace Gas_test2.WinUI.CtrlView
                 //DG_Out.Rows.Add(row);
                 //DG_In.Rows[j].Cells[0].Value = dataset.Tables[0].Rows[j][0];
                 //DG_Out.Rows[j].Cells[0].Value = dataset.Tables[0].Rows[j][0];
-                j++;
+                
             }
         }
 
@@ -158,12 +160,12 @@ namespace Gas_test2.WinUI.CtrlView
             {
                 foreach (DataGridViewRow dr in DG_In.Rows)
                 {
-                    DataSet flag = ServiceContainer.GetService<IGasDAL>().QueryData("*", "GoEquipSlet","GasometerName", lbox_Ometer.SelectedItem.ToString(),"EquipName",dr.Cells[0].Value.ToString());
+                    DataSet flag = ServiceContainer.GetService<IGasDAL>().QueryData("*", "GoEquipSlet", "GasometerName", lbox_Ometer.SelectedItem.ToString(), "EquipName", dr.Cells[0].Value.ToString());
                     if (flag.Tables[0].Rows.Count == 0)
                     {
                         try
                         {
-                            ServiceContainer.GetService<IGasDAL>().InsertData("GoEquipSlet",  "GasometerName", lbox_Ometer.SelectedItem.ToString(), "EquipName", dr.Cells[0].Value.ToString());
+                            ServiceContainer.GetService<IGasDAL>().InsertData("GoEquipSlet", "GasometerName", lbox_Ometer.SelectedItem.ToString(), "EquipName", dr.Cells[0].Value.ToString());
 
                         }
                         catch (Exception ex)
@@ -171,7 +173,7 @@ namespace Gas_test2.WinUI.CtrlView
                             MessageBox.Show(ex.Message);
                         }
                     }
-                    
+
                     try
                     {
                         ServiceContainer.GetService<IGasDAL>().UpdateOE("GoEquipSlet", "GasPercent", dr.Cells[2].Value.ToString(), "PorC", dr.Cells[1].Value.ToString(), "GasometerName", lbox_Ometer.SelectedItem.ToString(), "EquipName", dr.Cells[0].Value.ToString());
@@ -181,7 +183,7 @@ namespace Gas_test2.WinUI.CtrlView
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    
+
                 }
 
                 foreach (DataGridViewRow dr in DG_Out.Rows)
@@ -209,7 +211,7 @@ namespace Gas_test2.WinUI.CtrlView
                         MessageBox.Show(ex.Message);
                     }
                 }
- 
+
             }
             else
                 MessageBox.Show("请选择要更新的煤气柜");

@@ -111,6 +111,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lab_Name;
-        private System.Windows.Forms.NumericUpDown NoUD;
+        public System.Windows.Forms.NumericUpDown NoUD;
     }
 }

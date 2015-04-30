@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using EAS;
+using EAS.Services;
+using Gas_test2.BLL;
+
 namespace Gas_test2.WinUI.CtrlView
 {
     public partial class banner : UserControl
     {
-        private string bName="null";
-        private int bNum=1;
+        private string bName = "null";
+        private int bNum = 1;
 
-        public string LabelText 
+        public string LabelText
         {
             get
             {
@@ -29,14 +33,14 @@ namespace Gas_test2.WinUI.CtrlView
 
         public int UDNum
         {
-            get 
+            get
             {
                 return int.Parse(this.NoUD.Value.ToString());
             }
-            set 
+            set
             {
                 this.NoUD.Value = value;
-                this.bNum=value;
+                this.bNum = value;
             }
         }
         public banner()
@@ -45,9 +49,9 @@ namespace Gas_test2.WinUI.CtrlView
 
         }
 
-        public banner(string name,int num)
+        public banner(string name, int num)
         {
-            this.bName=name;
+            this.bName = name;
             this.bNum = num;
 
 
@@ -55,9 +59,13 @@ namespace Gas_test2.WinUI.CtrlView
 
 
 
-        private void NoUD_ValueChanged(object sender, EventArgs e)
+        public void NoUD_ValueChanged(object sender, EventArgs e)
         {
-             
+            if (NoUD.Value != 0)
+            {
+                ServiceContainer.GetService<IGasDAL>().UpdateData("GasometerType", "GasometerNum", bNum.ToString(), "GasometerName", bName);
+            }
+
         }
 
         private void banner_Load(object sender, EventArgs e)

@@ -18,7 +18,7 @@ using EAS.Data.Linq;
 
 using Gas_test2.Entities;
 
-using Gas_test2.BLL; 
+using Gas_test2.BLL;
 
 namespace Gas_test2.WinUI.CtrlView
 {
@@ -37,7 +37,7 @@ namespace Gas_test2.WinUI.CtrlView
             Setsize();
             panel1.BorderStyle = BorderStyle.Fixed3D;
             FreshUI("GasometerName", "GasometerType", "lbox_Gasometer");
-            
+
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Gas_test2.WinUI.CtrlView
             lbox_Gasometer.Items.Clear();
             panel1.Controls.Clear();
             dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData( tab);
+            dataset = ServiceContainer.GetService<IGasDAL>().QueryData(tab);
             int j = 0;
             foreach (DataRow dr in dataset.Tables[0].Rows)
             {
@@ -83,16 +83,16 @@ namespace Gas_test2.WinUI.CtrlView
                 lbox_Gasometer.Items.Add(dataset.Tables[0].Rows[j][cloum]);
 
                 //Panel
-                
-                Panel panelBar= new Panel();
+
+                Panel panelBar = new Panel();
                 panel1.Controls.Add(panelBar);
                 panelBar.BorderStyle = BorderStyle.FixedSingle;
-                panelBar.Location = new Point(10, 10 + panel1.Height*j / 4);
+                panelBar.Location = new Point(10, 10 + panel1.Height * j / 4);
                 panelBar.Size = new Size(this.ClientRectangle.Width, this.ClientRectangle.Height / 4);
-                   
+
                 banner bar = new banner();
-                bar.LabelText = dataset.Tables[0].Rows[j][cloum].ToString()+"数量：";
-                bar.UDNum =int.Parse( dataset.Tables[0].Rows[j]["GasometerNum"].ToString());
+                bar.LabelText = dataset.Tables[0].Rows[j][cloum].ToString() + "数量：";
+                bar.UDNum = int.Parse(dataset.Tables[0].Rows[j]["GasometerNum"].ToString());
                 panelBar.Controls.Add(bar);
 
                 j++;
@@ -112,11 +112,11 @@ namespace Gas_test2.WinUI.CtrlView
 
                 FreshUI("GasometerName", "GasometerType", "lbox_Gasometer");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -144,10 +144,15 @@ namespace Gas_test2.WinUI.CtrlView
         private void Setsize()
         {
             groupBox1.Location = new Point(10, 10);
-            groupBox1.Size = new Size((this.ClientRectangle.Width - 30)/4, this.ClientRectangle.Height - 20);
+            groupBox1.Size = new Size((this.ClientRectangle.Width - 30) / 4, this.ClientRectangle.Height - 20);
 
-            panel1.Location = new Point((this.ClientRectangle.Width - 30) / 4+20,  10);
-            panel1.Size = new Size((this.ClientRectangle.Width - 30)*3/4, this.ClientRectangle.Height - 20);
+            panel1.Location = new Point((this.ClientRectangle.Width - 30) / 4 + 20, 10);
+            panel1.Size = new Size((this.ClientRectangle.Width - 30) * 3 / 4, this.ClientRectangle.Height - 20);
+
+        }
+
+        public void UpdateNum()
+        {
 
         }
     }

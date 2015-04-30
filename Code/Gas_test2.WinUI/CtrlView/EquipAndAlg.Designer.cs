@@ -28,20 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Tree_Alg = new System.Windows.Forms.TreeView();
             this.cbox_Eq = new System.Windows.Forms.ComboBox();
             this.gbox1 = new System.Windows.Forms.GroupBox();
-            this.DG_Alg = new System.Windows.Forms.DataGridView();
-            this.C_Alg = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.C_Factor1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.C_Factor2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.C_Factor3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.C_Factor4 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Enter = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_Alg1 = new System.Windows.Forms.Label();
+            this.cbox11 = new System.Windows.Forms.ComboBox();
+            this.cbox12 = new System.Windows.Forms.ComboBox();
+            this.cbox13 = new System.Windows.Forms.ComboBox();
+            this.lblF1 = new System.Windows.Forms.Label();
+            this.lblF2 = new System.Windows.Forms.Label();
+            this.lblF3 = new System.Windows.Forms.Label();
+            this.cbox23 = new System.Windows.Forms.ComboBox();
+            this.cbox22 = new System.Windows.Forms.ComboBox();
+            this.cbox21 = new System.Windows.Forms.ComboBox();
+            this.lbl_Alg2 = new System.Windows.Forms.Label();
+            this.cbox33 = new System.Windows.Forms.ComboBox();
+            this.cbox32 = new System.Windows.Forms.ComboBox();
+            this.cbox31 = new System.Windows.Forms.ComboBox();
+            this.lbl_Alg3 = new System.Windows.Forms.Label();
+            this.cbox43 = new System.Windows.Forms.ComboBox();
+            this.cbox42 = new System.Windows.Forms.ComboBox();
+            this.cbox41 = new System.Windows.Forms.ComboBox();
+            this.lbl_Alg4 = new System.Windows.Forms.Label();
             this.gbox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DG_Alg)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,58 +87,6 @@
             this.gbox1.TabStop = false;
             this.gbox1.Text = "选择设备：";
             // 
-            // DG_Alg
-            // 
-            this.DG_Alg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DG_Alg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.C_Alg,
-            this.C_Factor1,
-            this.C_Factor2,
-            this.C_Factor3,
-            this.C_Factor4});
-            this.DG_Alg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DG_Alg.Location = new System.Drawing.Point(0, 0);
-            this.DG_Alg.Name = "DG_Alg";
-            this.DG_Alg.RowTemplate.Height = 23;
-            this.DG_Alg.Size = new System.Drawing.Size(642, 372);
-            this.DG_Alg.TabIndex = 0;
-            // 
-            // C_Alg
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F);
-            this.C_Alg.DefaultCellStyle = dataGridViewCellStyle2;
-            this.C_Alg.HeaderText = "可选算法";
-            this.C_Alg.Name = "C_Alg";
-            // 
-            // C_Factor1
-            // 
-            this.C_Factor1.HeaderText = "算法因素1";
-            this.C_Factor1.Name = "C_Factor1";
-            // 
-            // C_Factor2
-            // 
-            this.C_Factor2.HeaderText = "算法因素2";
-            this.C_Factor2.Name = "C_Factor2";
-            // 
-            // C_Factor3
-            // 
-            this.C_Factor3.HeaderText = "算法因素3";
-            this.C_Factor3.Name = "C_Factor3";
-            // 
-            // C_Factor4
-            // 
-            this.C_Factor4.HeaderText = "算法因素4";
-            this.C_Factor4.Name = "C_Factor4";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.DG_Alg);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 85);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(642, 372);
-            this.panel1.TabIndex = 8;
-            // 
             // btn_Enter
             // 
             this.btn_Enter.Location = new System.Drawing.Point(535, 31);
@@ -137,6 +96,192 @@
             this.btn_Enter.Text = "确认";
             this.btn_Enter.UseVisualStyleBackColor = true;
             this.btn_Enter.Click += new System.EventHandler(this.btn_Enter_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cbox43);
+            this.panel1.Controls.Add(this.cbox42);
+            this.panel1.Controls.Add(this.cbox41);
+            this.panel1.Controls.Add(this.lbl_Alg4);
+            this.panel1.Controls.Add(this.cbox33);
+            this.panel1.Controls.Add(this.cbox32);
+            this.panel1.Controls.Add(this.cbox31);
+            this.panel1.Controls.Add(this.lbl_Alg3);
+            this.panel1.Controls.Add(this.cbox23);
+            this.panel1.Controls.Add(this.cbox22);
+            this.panel1.Controls.Add(this.cbox21);
+            this.panel1.Controls.Add(this.lbl_Alg2);
+            this.panel1.Controls.Add(this.lblF3);
+            this.panel1.Controls.Add(this.lblF2);
+            this.panel1.Controls.Add(this.lblF1);
+            this.panel1.Controls.Add(this.cbox13);
+            this.panel1.Controls.Add(this.cbox12);
+            this.panel1.Controls.Add(this.cbox11);
+            this.panel1.Controls.Add(this.lbl_Alg1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 85);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(642, 372);
+            this.panel1.TabIndex = 8;
+            // 
+            // lbl_Alg1
+            // 
+            this.lbl_Alg1.AutoSize = true;
+            this.lbl_Alg1.Location = new System.Drawing.Point(31, 43);
+            this.lbl_Alg1.Name = "lbl_Alg1";
+            this.lbl_Alg1.Size = new System.Drawing.Size(41, 12);
+            this.lbl_Alg1.TabIndex = 0;
+            this.lbl_Alg1.Text = "BP算法";
+            // 
+            // cbox11
+            // 
+            this.cbox11.FormattingEnabled = true;
+            this.cbox11.Location = new System.Drawing.Point(122, 40);
+            this.cbox11.Name = "cbox11";
+            this.cbox11.Size = new System.Drawing.Size(121, 20);
+            this.cbox11.TabIndex = 1;
+            // 
+            // cbox12
+            // 
+            this.cbox12.FormattingEnabled = true;
+            this.cbox12.Location = new System.Drawing.Point(274, 40);
+            this.cbox12.Name = "cbox12";
+            this.cbox12.Size = new System.Drawing.Size(121, 20);
+            this.cbox12.TabIndex = 2;
+            // 
+            // cbox13
+            // 
+            this.cbox13.FormattingEnabled = true;
+            this.cbox13.Location = new System.Drawing.Point(436, 40);
+            this.cbox13.Name = "cbox13";
+            this.cbox13.Size = new System.Drawing.Size(121, 20);
+            this.cbox13.TabIndex = 3;
+            // 
+            // lblF1
+            // 
+            this.lblF1.AutoSize = true;
+            this.lblF1.Location = new System.Drawing.Point(169, 7);
+            this.lblF1.Name = "lblF1";
+            this.lblF1.Size = new System.Drawing.Size(35, 12);
+            this.lblF1.TabIndex = 4;
+            this.lblF1.Text = "因素1";
+            // 
+            // lblF2
+            // 
+            this.lblF2.AutoSize = true;
+            this.lblF2.Location = new System.Drawing.Point(305, 7);
+            this.lblF2.Name = "lblF2";
+            this.lblF2.Size = new System.Drawing.Size(35, 12);
+            this.lblF2.TabIndex = 5;
+            this.lblF2.Text = "因素2";
+            // 
+            // lblF3
+            // 
+            this.lblF3.AutoSize = true;
+            this.lblF3.Location = new System.Drawing.Point(480, 7);
+            this.lblF3.Name = "lblF3";
+            this.lblF3.Size = new System.Drawing.Size(35, 12);
+            this.lblF3.TabIndex = 6;
+            this.lblF3.Text = "因素3";
+            // 
+            // cbox23
+            // 
+            this.cbox23.FormattingEnabled = true;
+            this.cbox23.Location = new System.Drawing.Point(436, 95);
+            this.cbox23.Name = "cbox23";
+            this.cbox23.Size = new System.Drawing.Size(121, 20);
+            this.cbox23.TabIndex = 10;
+            // 
+            // cbox22
+            // 
+            this.cbox22.FormattingEnabled = true;
+            this.cbox22.Location = new System.Drawing.Point(274, 95);
+            this.cbox22.Name = "cbox22";
+            this.cbox22.Size = new System.Drawing.Size(121, 20);
+            this.cbox22.TabIndex = 9;
+            // 
+            // cbox21
+            // 
+            this.cbox21.FormattingEnabled = true;
+            this.cbox21.Location = new System.Drawing.Point(122, 95);
+            this.cbox21.Name = "cbox21";
+            this.cbox21.Size = new System.Drawing.Size(121, 20);
+            this.cbox21.TabIndex = 8;
+            // 
+            // lbl_Alg2
+            // 
+            this.lbl_Alg2.AutoSize = true;
+            this.lbl_Alg2.Location = new System.Drawing.Point(31, 98);
+            this.lbl_Alg2.Name = "lbl_Alg2";
+            this.lbl_Alg2.Size = new System.Drawing.Size(47, 12);
+            this.lbl_Alg2.TabIndex = 7;
+            this.lbl_Alg2.Text = "RBF算法";
+            // 
+            // cbox33
+            // 
+            this.cbox33.FormattingEnabled = true;
+            this.cbox33.Location = new System.Drawing.Point(436, 145);
+            this.cbox33.Name = "cbox33";
+            this.cbox33.Size = new System.Drawing.Size(121, 20);
+            this.cbox33.TabIndex = 14;
+            // 
+            // cbox32
+            // 
+            this.cbox32.FormattingEnabled = true;
+            this.cbox32.Location = new System.Drawing.Point(274, 145);
+            this.cbox32.Name = "cbox32";
+            this.cbox32.Size = new System.Drawing.Size(121, 20);
+            this.cbox32.TabIndex = 13;
+            // 
+            // cbox31
+            // 
+            this.cbox31.FormattingEnabled = true;
+            this.cbox31.Location = new System.Drawing.Point(122, 145);
+            this.cbox31.Name = "cbox31";
+            this.cbox31.Size = new System.Drawing.Size(121, 20);
+            this.cbox31.TabIndex = 12;
+            // 
+            // lbl_Alg3
+            // 
+            this.lbl_Alg3.AutoSize = true;
+            this.lbl_Alg3.Location = new System.Drawing.Point(31, 148);
+            this.lbl_Alg3.Name = "lbl_Alg3";
+            this.lbl_Alg3.Size = new System.Drawing.Size(77, 12);
+            this.lbl_Alg3.TabIndex = 11;
+            this.lbl_Alg3.Text = "多元线性回归";
+            // 
+            // cbox43
+            // 
+            this.cbox43.FormattingEnabled = true;
+            this.cbox43.Location = new System.Drawing.Point(436, 202);
+            this.cbox43.Name = "cbox43";
+            this.cbox43.Size = new System.Drawing.Size(121, 20);
+            this.cbox43.TabIndex = 18;
+            // 
+            // cbox42
+            // 
+            this.cbox42.FormattingEnabled = true;
+            this.cbox42.Location = new System.Drawing.Point(274, 202);
+            this.cbox42.Name = "cbox42";
+            this.cbox42.Size = new System.Drawing.Size(121, 20);
+            this.cbox42.TabIndex = 17;
+            // 
+            // cbox41
+            // 
+            this.cbox41.FormattingEnabled = true;
+            this.cbox41.Location = new System.Drawing.Point(122, 202);
+            this.cbox41.Name = "cbox41";
+            this.cbox41.Size = new System.Drawing.Size(121, 20);
+            this.cbox41.TabIndex = 16;
+            // 
+            // lbl_Alg4
+            // 
+            this.lbl_Alg4.AutoSize = true;
+            this.lbl_Alg4.Location = new System.Drawing.Point(31, 205);
+            this.lbl_Alg4.Name = "lbl_Alg4";
+            this.lbl_Alg4.Size = new System.Drawing.Size(53, 12);
+            this.lbl_Alg4.TabIndex = 15;
+            this.lbl_Alg4.Text = "多层递阶";
             // 
             // EquipAndAlg
             // 
@@ -149,8 +294,8 @@
             this.Size = new System.Drawing.Size(944, 457);
             this.Load += new System.EventHandler(this.EquipAndAlg_Load);
             this.gbox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DG_Alg)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -160,14 +305,27 @@
         private System.Windows.Forms.TreeView Tree_Alg;
         private System.Windows.Forms.ComboBox cbox_Eq;
         private System.Windows.Forms.GroupBox gbox1;
-        private System.Windows.Forms.DataGridView DG_Alg;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn C_Alg;
-        private System.Windows.Forms.DataGridViewComboBoxColumn C_Factor1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn C_Factor2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn C_Factor3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn C_Factor4;
         private System.Windows.Forms.Button btn_Enter;
+        private System.Windows.Forms.ComboBox cbox43;
+        private System.Windows.Forms.ComboBox cbox42;
+        private System.Windows.Forms.ComboBox cbox41;
+        private System.Windows.Forms.Label lbl_Alg4;
+        private System.Windows.Forms.ComboBox cbox33;
+        private System.Windows.Forms.ComboBox cbox32;
+        private System.Windows.Forms.ComboBox cbox31;
+        private System.Windows.Forms.Label lbl_Alg3;
+        private System.Windows.Forms.ComboBox cbox23;
+        private System.Windows.Forms.ComboBox cbox22;
+        private System.Windows.Forms.ComboBox cbox21;
+        private System.Windows.Forms.Label lbl_Alg2;
+        private System.Windows.Forms.Label lblF3;
+        private System.Windows.Forms.Label lblF2;
+        private System.Windows.Forms.Label lblF1;
+        private System.Windows.Forms.ComboBox cbox13;
+        private System.Windows.Forms.ComboBox cbox12;
+        private System.Windows.Forms.ComboBox cbox11;
+        private System.Windows.Forms.Label lbl_Alg1;
 
     }
 }

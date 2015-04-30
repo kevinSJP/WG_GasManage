@@ -89,7 +89,9 @@ namespace Gas_test2.WinUI
                 case 4:
                     //SaveEquipAlg();
                     PictureBox picbox = new PictureBox();
-                    //picbox.Image=Properties.Resources.;
+                    picbox.Dock = DockStyle.Fill;
+                    picbox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    picbox.Image=Properties.Resources.liucheng;
                     panel1.Controls.Clear();
                     panel1.Controls.Add(picbox);
                     btn_Next.Text = "再次配置";
