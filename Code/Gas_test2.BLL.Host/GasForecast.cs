@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-//using System.Threading;
-
-
+using System.Threading;
+using System.Threading.Tasks;
 using EAS.Data.Linq;
 using EAS.Data.ORM;
 using Gas_test2.Entities;
@@ -37,6 +36,9 @@ namespace Gas_test2.BLL
             //数据返回数据库
             //释放线程
         }
+
+
+        //定时启动几个线程
         private void Thread_Timer_Linshi_Method3()
         {
             double[] data1 = new double[] { -0.9602, -0.5770, -0.0729, 0.3771, 0.6405, 0.6600, 0.4609, 0.1336, -0.2013, -0.4344, -0.5000, -0.3930, -0.1647, -.0988, 0.3072, 0.3960, 0.3449, 0.1816, -0.312, -0.2189, -0.3201 };
@@ -79,6 +81,10 @@ namespace Gas_test2.BLL
             Console.WriteLine("The Thread program is end.");
         }
 
+
+
+
+
         public int Forecast(string AlgName)
         {
             
@@ -120,6 +126,8 @@ namespace Gas_test2.BLL
 
             //t.Commit();
 
+            //DataSet ds= dataControl.QueryData("","","");
+            //ds.Tables[0].Rows[];
 
             return 0;
         }
