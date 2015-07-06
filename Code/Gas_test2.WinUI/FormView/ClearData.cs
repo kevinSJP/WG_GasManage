@@ -28,8 +28,15 @@ namespace Gas_test2.WinUI.FormView
 
         private void ClearData_Load(object sender, EventArgs e)
         {
-
+            try
+            {
             dataset=ServiceContainer.GetService<IGasDAL>().QueryTabName();
+             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             int j = 0;
             foreach (DataRow dr in dataset.Tables[0].Rows)
             {
@@ -55,7 +62,15 @@ namespace Gas_test2.WinUI.FormView
             {
                 if (lbox_Table.SelectedItems.Count != 0)
                 {
+                    try
+                {
                     ServiceContainer.GetService<IGasDAL>().DropTable(lbox_Table.SelectedItem.ToString());
+                }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("清除表格异常" + ex.Message);
+                        return;
+                    }
                     lbox_Table.Items.RemoveAt(lbox_Table.SelectedIndex);
                 }
             }

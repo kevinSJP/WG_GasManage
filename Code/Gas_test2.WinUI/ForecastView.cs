@@ -71,7 +71,15 @@ namespace Gas_test2.WinUI
         {
 
             dataset.Clear();
+            try
+            {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet");
+             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             Tree_Equip.Nodes.Clear();
             int j = 0;
             foreach (DataRow dr in dataset.Tables[0].Rows)
@@ -108,7 +116,15 @@ namespace Gas_test2.WinUI
             string[] Row = selected.Split('#');
 
             dataset.Clear();
+            try
+                {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet", "EquipName", Row[1]);
+                }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             txtAlg.Text = dataset.Tables[0].Rows[0]["ForecastAlg"].ToString();
             txtDuration.Text = dataset.Tables[0].Rows[0]["Duration"].ToString();
             //triggerTime = int.Parse(dataset.Tables[0].Rows[0]["TriggerTime"].ToString());
@@ -188,7 +204,15 @@ namespace Gas_test2.WinUI
 
             //////查询
             dataset.Clear();
+            try
+                {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("TIME , FLOW", Num[1] + Num[0] + "_FCST", "TIME", StartTime, EndTime);
+                }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
 
             ////设置DG
             DG1.DataSource = dataset.Tables[0];

@@ -56,7 +56,15 @@ namespace Gas_test2.WinUI
 
             DG_Forecast.Rows.Clear();
             dataset.Clear();
+            try
+                {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipName", "EquipTypeSlet");
+                }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             int j = 0;
             foreach (DataRow dr in dataset.Tables[0].Rows)
             {
@@ -69,7 +77,15 @@ namespace Gas_test2.WinUI
                 row.Cells.Add(txtboxcell0);
 
                 DataGridViewComboBoxCell comboxcell = new DataGridViewComboBoxCell();
+                try
+                {
                 datasetAlg = ServiceContainer.GetService<IGasDAL>().QueryData("EquipAlgSlet", "EquipName", dataset.Tables[0].Rows[j]["EquipName"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
                 int i = 0;
                 foreach (DataRow dr2 in datasetAlg.Tables[0].Rows)  
                 {

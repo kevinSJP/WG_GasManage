@@ -128,8 +128,15 @@ namespace Gas_test2.WinUI
             if (listbox == "lbox_Alg")
             {
                 dataset.Clear();
-
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData(cloum, tab);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
 
                 int j = 0;
                 foreach (DataRow dr in dataset.Tables[0].Rows)
@@ -143,7 +150,15 @@ namespace Gas_test2.WinUI
             else if (listbox == "cbox_Eq")
             {
                 dataset.Clear();
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData(cloum, tab, "Selected", "1");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
                 int j = 0;
                 foreach (DataRow dr in dataset.Tables[0].Rows)
                 {
@@ -162,7 +177,15 @@ namespace Gas_test2.WinUI
             string L1, L2, L3;
 
             dataset.Clear();
+            try
+            {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("L1", "EquipTypeSlet", "EquipName", cbox_Eq.Text);
+             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             L1 = dataset.Tables[0].Rows[0][0].ToString();
             string[] L1D = L1.Split(';');
             for (int i = 0; i < L1D.Count()-1; i++)
@@ -171,7 +194,15 @@ namespace Gas_test2.WinUI
             }
 
             dataset.Clear();
+            try
+            {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("L2", "EquipTypeSlet", "EquipName", cbox_Eq.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             L2 = dataset.Tables[0].Rows[0][0].ToString();
             string[] L2D = L2.Split(';');
             for (int i = 0; i < L2D.Count()-1; i++)
@@ -180,7 +211,15 @@ namespace Gas_test2.WinUI
             }
 
             dataset.Clear();
+            try
+            {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("L3", "EquipTypeSlet", "EquipName", cbox_Eq.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             L3 = dataset.Tables[0].Rows[0][0].ToString();
             string[] L3D = L3.Split(';');
             for (int i = 0; i < L3D.Count()-1; i++)
@@ -216,7 +255,15 @@ namespace Gas_test2.WinUI
                         {
                             Factor = Factor + lbox_UsedFact.Items[i]+";";
                         }
+                        try
+                        {
                         ServiceContainer.GetService<IGasDAL>().UpdateData("EquipAlgSlet", "Factor", Factor, "EquipName", cbox_Eq.Text, "AlgName", lbox_UsedAlg.SelectedItem.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("刷新数据异常" + ex.Message);
+                            return;
+                        }
                     }
             }
         }
@@ -234,8 +281,15 @@ namespace Gas_test2.WinUI
                     {
                         Factor = Factor + lbox_UsedFact.Items[i] + ";";
                     }
+                    try
+                    {
                     ServiceContainer.GetService<IGasDAL>().UpdateData("EquipAlgSlet", "Factor", Factor, "EquipName", cbox_Eq.Text, "AlgName", lbox_UsedAlg.SelectedItem.ToString());
-
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("刷新数据异常" + ex.Message);
+                        return;
+                    }
                 }
             }
         }
@@ -247,7 +301,15 @@ namespace Gas_test2.WinUI
                 lbox_UsedAlg.Items.Clear();
                 //FreshLbox("EquipName", "EquipAlgSlet", "lbox_UsedAlg");
                 dataset.Clear();
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData("AlgName", "EquipAlgSlet", "EquipName", cbox_Eq.Text);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
 
                 int j = 0;
                 foreach (DataRow dr in dataset.Tables[0].Rows)
@@ -264,7 +326,15 @@ namespace Gas_test2.WinUI
                 string L1, L2, L3;
 
                 dataset.Clear();
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData("L1", "EquipTypeSlet", "EquipName", cbox_Eq.Text);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
                 L1 = dataset.Tables[0].Rows[0][0].ToString();
                 string[] L1D = L1.Split(';');
                 for (int i = 0; i < L1D.Count() - 1; i++)
@@ -273,7 +343,15 @@ namespace Gas_test2.WinUI
                 }
 
                 dataset.Clear();
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData("L2", "EquipTypeSlet", "EquipName", cbox_Eq.Text);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
                 L2 = dataset.Tables[0].Rows[0][0].ToString();
                 string[] L2D = L2.Split(';');
                 for (int i = 0; i < L2D.Count() - 1; i++)
@@ -282,7 +360,15 @@ namespace Gas_test2.WinUI
                 }
 
                 dataset.Clear();
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData("L3", "EquipTypeSlet", "EquipName", cbox_Eq.Text);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
                 L3 = dataset.Tables[0].Rows[0][0].ToString();
                 string[] L3D = L3.Split(';');
                 for (int i = 0; i < L3D.Count() - 1; i++)

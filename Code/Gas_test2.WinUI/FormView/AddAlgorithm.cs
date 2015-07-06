@@ -21,7 +21,15 @@ namespace Gas_test2.WinUI.FormView
         private void btn_Enter_Click(object sender, EventArgs e)
         {
             if (txtName.Text.Trim() != "" && txtSName.Text.Trim() != "")
+                try
+                {
                 ServiceContainer.GetService<IGasDAL>().InsertData("AddAlgTypeAbl", "AlgName", txtName.Text.Trim(), "ATabName", txtSName.Text.Trim());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("添加异常" + ex.Message);
+                    return;
+                }
         }
 
         private void btn_Close_Click(object sender, EventArgs e)

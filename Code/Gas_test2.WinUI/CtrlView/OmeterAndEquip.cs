@@ -53,101 +53,128 @@ namespace Gas_test2.WinUI.CtrlView
         /// <param name="listbox">listbox名</param>
         private void FreshLbox(string cloum, string tab, string listbox)
         {
-
-            lbox_Ometer.Items.Clear();
-            dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData(cloum, tab);
-            int j = 0;
-            foreach (DataRow dr in dataset.Tables[0].Rows)
+            try
             {
-                lbox_Ometer.Items.Add(dataset.Tables[0].Rows[j][cloum]);
-                j++;
+                lbox_Ometer.Items.Clear();
+                dataset.Clear();
+                dataset = ServiceContainer.GetService<IGasDAL>().QueryData(cloum, tab);
+                int j = 0;
+                foreach (DataRow dr in dataset.Tables[0].Rows)
+                {
+                    lbox_Ometer.Items.Add(dataset.Tables[0].Rows[j][cloum]);
+                    j++;
+                }
+
+
+
             }
-
-
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
         }
+
+
 
         private void lbox_Ometer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbox_Ometer.SelectedItems.Count != 0)
+            try
             {
-                dataset.Clear();
-                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("GoEquipSlet", "GasometerName", lbox_Ometer.SelectedItem.ToString());
 
-                
-                    
-            foreach (DataRow dr in dataset.Tables[0].Rows)
+                if (lbox_Ometer.SelectedItems.Count != 0)
+                {
+                    dataset.Clear();
+                    dataset = ServiceContainer.GetService<IGasDAL>().QueryData("GoEquipSlet", "GasometerName", lbox_Ometer.SelectedItem.ToString());
+
+
+
+                    foreach (DataRow dr in dataset.Tables[0].Rows)
+                    {
+                        DataSet PorC = ServiceContainer.GetService<IGasDAL>().QueryData("PorC", "EquipTypeSlet", "EquipName", dr["EquipName"].ToString());
+                        if (PorC.Tables[0].Rows[0][0].ToString() == "True")
+                        {
+                            //dr["PorC"].ToString() == "True" && dr["EquipName"].ToString() == DG_In.Rows[i].Cells["设备名称"].Value.ToString();
+                            //DG_In.Rows[i].Cells[1].Value = 1;
+                            //DG_In.Rows[i].Cells[2].Value = dr["GasPercent"];
+                        }
+                        else if (PorC.Tables[0].Rows[0][0].ToString() == "False")
+                        {
+                            //dr["PorC"].ToString() == "False" && dr["EquipName"].ToString() == DG_Out.Rows[i].Cells["设备名称"].Value.ToString()
+                            //DG_Out.Rows[i].Cells[1].Value = 1;
+                            //DG_Out.Rows[i].Cells[2].Value = dr["GasPercent"];
+                        }
+
+                    }
+
+
+                }
+
+
+            }
+            catch (Exception ex)
             {
-                DataSet PorC = ServiceContainer.GetService<IGasDAL>().QueryData("PorC", "EquipTypeSlet", "EquipName", dr["EquipName"].ToString());
-                if (PorC.Tables[0].Rows[0][0].ToString() == "True")
-                {
-                    //dr["PorC"].ToString() == "True" && dr["EquipName"].ToString() == DG_In.Rows[i].Cells["设备名称"].Value.ToString();
-                    //DG_In.Rows[i].Cells[1].Value = 1;
-                    //DG_In.Rows[i].Cells[2].Value = dr["GasPercent"];
-                }
-                else if (PorC.Tables[0].Rows[0][0].ToString() == "False")
-                {
-                    //dr["PorC"].ToString() == "False" && dr["EquipName"].ToString() == DG_Out.Rows[i].Cells["设备名称"].Value.ToString()
-                    //DG_Out.Rows[i].Cells[1].Value = 1;
-                    //DG_Out.Rows[i].Cells[2].Value = dr["GasPercent"];
-                }
-                        
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
             }
-
-                
-            }
-
-
         }
+
 
         private void FreshDG()
         {
-            DG_In.Rows.Clear();
-            DG_Out.Rows.Clear();
-            dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet");
-            equipTypeNum = dataset.Tables[0].Rows.Count;
-            
-            foreach (DataRow dr in dataset.Tables[0].Rows)
+            try
             {
-                if (dr["PorC"].ToString() == "True")
-                {
-                    DataGridViewRow row = new DataGridViewRow();
-                    DataGridViewTextBoxCell textboxcell = new DataGridViewTextBoxCell();
-                    textboxcell.Value = dr[0];
-                    row.Cells.Add(textboxcell);
-                    DataGridViewCheckBoxCell checkcell = new DataGridViewCheckBoxCell();
-                    checkcell.Value = false;
-                    row.Cells.Add(checkcell);
-                    DataGridViewTextBoxCell txtboxcell = new DataGridViewTextBoxCell();
-                    row.Cells.Add(txtboxcell);
-                    DG_In.Rows.Add(row);
-                }
-                else
-                {
-                    DataGridViewRow row2 = new DataGridViewRow();
-                    DataGridViewTextBoxCell textboxcell2 = new DataGridViewTextBoxCell();
-                    textboxcell2.Value = dr[0];
-                    row2.Cells.Add(textboxcell2);
-                    DataGridViewCheckBoxCell checkcell2 = new DataGridViewCheckBoxCell();
-                    checkcell2.Value = false;
-                    row2.Cells.Add(checkcell2);
-                    DataGridViewTextBoxCell txtboxcell2 = new DataGridViewTextBoxCell();
-                    row2.Cells.Add(txtboxcell2);
-                    DG_Out.Rows.Add(row2);
-                }
 
-                //DataGridViewRow row = new DataGridViewRow();
-                //row.Cells["设备名称"].Value = dataset.Tables[0].Rows[j][0];//设置row属性
-                //DG_In.Rows.Add(row);
-                //DG_Out.Rows.Add(row);
-                //DG_In.Rows[j].Cells[0].Value = dataset.Tables[0].Rows[j][0];
-                //DG_Out.Rows[j].Cells[0].Value = dataset.Tables[0].Rows[j][0];
-                
+                DG_In.Rows.Clear();
+                DG_Out.Rows.Clear();
+                dataset.Clear();
+                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet");
+                equipTypeNum = dataset.Tables[0].Rows.Count;
+
+                foreach (DataRow dr in dataset.Tables[0].Rows)
+                {
+                    if (dr["PorC"].ToString() == "True")
+                    {
+                        DataGridViewRow row = new DataGridViewRow();
+                        DataGridViewTextBoxCell textboxcell = new DataGridViewTextBoxCell();
+                        textboxcell.Value = dr[0];
+                        row.Cells.Add(textboxcell);
+                        DataGridViewCheckBoxCell checkcell = new DataGridViewCheckBoxCell();
+                        checkcell.Value = false;
+                        row.Cells.Add(checkcell);
+                        DataGridViewTextBoxCell txtboxcell = new DataGridViewTextBoxCell();
+                        row.Cells.Add(txtboxcell);
+                        DG_In.Rows.Add(row);
+                    }
+                    else
+                    {
+                        DataGridViewRow row2 = new DataGridViewRow();
+                        DataGridViewTextBoxCell textboxcell2 = new DataGridViewTextBoxCell();
+                        textboxcell2.Value = dr[0];
+                        row2.Cells.Add(textboxcell2);
+                        DataGridViewCheckBoxCell checkcell2 = new DataGridViewCheckBoxCell();
+                        checkcell2.Value = false;
+                        row2.Cells.Add(checkcell2);
+                        DataGridViewTextBoxCell txtboxcell2 = new DataGridViewTextBoxCell();
+                        row2.Cells.Add(txtboxcell2);
+                        DG_Out.Rows.Add(row2);
+                    }
+
+                    //DataGridViewRow row = new DataGridViewRow();
+                    //row.Cells["设备名称"].Value = dataset.Tables[0].Rows[j][0];//设置row属性
+                    //DG_In.Rows.Add(row);
+                    //DG_Out.Rows.Add(row);
+                    //DG_In.Rows[j].Cells[0].Value = dataset.Tables[0].Rows[j][0];
+                    //DG_Out.Rows[j].Cells[0].Value = dataset.Tables[0].Rows[j][0];
+
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
             }
         }
-
         private void DG_In_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
