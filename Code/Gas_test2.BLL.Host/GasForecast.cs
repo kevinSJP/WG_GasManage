@@ -37,6 +37,47 @@ namespace Gas_test2.BLL
             //数据返回数据库
             //释放线程
         }
+        private void Thread_Timer_Linshi_Method3()
+        {
+            double[] data1 = new double[] { -0.9602, -0.5770, -0.0729, 0.3771, 0.6405, 0.6600, 0.4609, 0.1336, -0.2013, -0.4344, -0.5000, -0.3930, -0.1647, -.0988, 0.3072, 0.3960, 0.3449, 0.1816, -0.312, -0.2189, -0.3201 };
+            double[] data2 = new double[] { 12, 2, -23, 9, -32, 3, 21, 25, -65, -22, -77, 212, -47, 88, 72, 30, 49, 16, -312, -89, -51 };
+            double[,] outdata1 = new double[21, 1];
+            double[,] outdata2 = new double[21, 1];
+
+            ML1 m1 = new ML1();
+            ML2 m2 = new ML2();
+
+            Parallel.Invoke(
+                () =>
+                {
+
+                    outdata1 = m1.ExeAlgorithm(data1, "bp");
+                    foreach (var item1 in outdata1)
+                    {
+                        double num1 = Math.Round(item1, 4);
+                        Console.WriteLine("This is the first threadProgram.");
+                        Console.WriteLine(num1);
+                    }
+                },
+
+                () =>
+                {
+                    outdata2 = m2.ExeAlgorithm3(data2, "dbp");
+                    foreach (var item2 in outdata2)
+                    {
+                        double num2 = Math.Round(item2, 4);
+                        Console.WriteLine("This is the  second threadProgram.");
+                        Console.WriteLine(num2);
+                    }
+
+                }
+                );
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            Console.WriteLine("The Thread program is end.");
+        }
 
         public int Forecast(string AlgName)
         {
