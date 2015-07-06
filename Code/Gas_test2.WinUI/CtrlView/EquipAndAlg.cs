@@ -54,31 +54,40 @@ namespace Gas_test2.WinUI.CtrlView
             cbox42.Items.Clear();
             cbox43.Items.Clear();
             dataset.Clear();
-
-            if (cbox_Eq.Text.Trim() != "")
-            {
-                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet", "EquipName", cbox_Eq.Text.Trim());
-
-                string Factor = dataset.Tables[0].Rows[0]["L1"].ToString() + dataset.Tables[0].Rows[0]["L2"].ToString() + dataset.Tables[0].Rows[0]["L3"].ToString();
-                string[] FactorD = Factor.Split(';');
-
-                for (int i = 0; i < FactorD.Count() - 1; i++)
+            
+                if (cbox_Eq.Text.Trim() != "")
                 {
-                    cbox11.Items.Add(FactorD[i]);
-                    cbox12.Items.Add(FactorD[i]);
-                    cbox13.Items.Add(FactorD[i]);
-                    cbox21.Items.Add(FactorD[i]);
-                    cbox22.Items.Add(FactorD[i]);
-                    cbox23.Items.Add(FactorD[i]);
-                    cbox31.Items.Add(FactorD[i]);
-                    cbox32.Items.Add(FactorD[i]);
-                    cbox33.Items.Add(FactorD[i]);
-                    cbox41.Items.Add(FactorD[i]);
-                    cbox42.Items.Add(FactorD[i]);
-                    cbox43.Items.Add(FactorD[i]);
-                }
-            }
+                    try
+                    {
+                        dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet", "EquipName", cbox_Eq.Text.Trim());
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("查询异常" + ex.Message);
+                        return;
+                    }
+                    
+                    string Factor = dataset.Tables[0].Rows[0]["L1"].ToString() + dataset.Tables[0].Rows[0]["L2"].ToString() + dataset.Tables[0].Rows[0]["L3"].ToString();
+                    string[] FactorD = Factor.Split(';');
 
+                    for (int i = 0; i < FactorD.Count() - 1; i++)
+                    {
+                        cbox11.Items.Add(FactorD[i]);
+                        cbox12.Items.Add(FactorD[i]);
+                        cbox13.Items.Add(FactorD[i]);
+                        cbox21.Items.Add(FactorD[i]);
+                        cbox22.Items.Add(FactorD[i]);
+                        cbox23.Items.Add(FactorD[i]);
+                        cbox31.Items.Add(FactorD[i]);
+                        cbox32.Items.Add(FactorD[i]);
+                        cbox33.Items.Add(FactorD[i]);
+                        cbox41.Items.Add(FactorD[i]);
+                        cbox42.Items.Add(FactorD[i]);
+                        cbox43.Items.Add(FactorD[i]);
+                    }
+                }
+           
+            
         }
 
         private void FreshFactor()
@@ -90,102 +99,135 @@ namespace Gas_test2.WinUI.CtrlView
             lbl_Alg3.Text = Alg3 + "：";
             lbl_Alg4.Text = Alg4 + "：";
 
-            if (cbox_Eq.Text.Trim() != "")
-            {
-                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("Factor", "EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg1);
-                string Factor = dataset.Tables[0].Rows[0][0].ToString();
-                string[] FactorD = Factor.Split(';');
-                for (int i = 0; i < FactorD.Count(); i++)
+            
+                if (cbox_Eq.Text.Trim() != "")
                 {
-                    switch (i)
-                    {
-                        case 0:
-                            cbox11.Text = FactorD[i];
-                            break;
-                        case 1:
-                            cbox12.Text = FactorD[i];
-                            break;
-                        case 2:
-                            cbox13.Text = FactorD[i];
-                            break;
-                        default:
-                            break;
 
+                    try
+                    {
+                        dataset = ServiceContainer.GetService<IGasDAL>().QueryData("Factor", "EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg1);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("查询异常" + ex.Message);
+                        return;
+                    }
+                        string Factor = dataset.Tables[0].Rows[0][0].ToString();
+                    string[] FactorD = Factor.Split(';');
+                    for (int i = 0; i < FactorD.Count(); i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                cbox11.Text = FactorD[i];
+                                break;
+                            case 1:
+                                cbox12.Text = FactorD[i];
+                                break;
+                            case 2:
+                                cbox13.Text = FactorD[i];
+                                break;
+                            default:
+                                break;
+
+                        }
+                    }
+
+
+                    try
+                    {
+                        dataset = ServiceContainer.GetService<IGasDAL>().QueryData("Factor", "EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg2);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("抛出异常" + ex.Message);
+                        return;
+                    }
+                    Factor = dataset.Tables[0].Rows[0][0].ToString();
+                    FactorD = Factor.Split(';');
+                    for (int i = 0; i < FactorD.Count(); i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                cbox21.Text = FactorD[i];
+                                break;
+                            case 1:
+                                cbox22.Text = FactorD[i];
+                                break;
+                            case 2:
+                                cbox23.Text = FactorD[i];
+                                break;
+                            default:
+                                break;
+
+                        }
+                    }
+
+                    try
+                    {
+                        dataset = ServiceContainer.GetService<IGasDAL>().QueryData("Factor", "EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg3);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("查询异常" + ex.Message);
+                        return;
+                    }
+                    Factor = dataset.Tables[0].Rows[0][0].ToString();
+                    FactorD = Factor.Split(';');
+                    for (int i = 0; i < FactorD.Count(); i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                cbox31.Text = FactorD[i];
+                                break;
+                            case 1:
+                                cbox32.Text = FactorD[i];
+                                break;
+                            case 2:
+                                cbox33.Text = FactorD[i];
+                                break;
+                            default:
+                                break;
+
+                        }
+                    }
+
+                    try
+                    {
+                        dataset = ServiceContainer.GetService<IGasDAL>().QueryData("Factor", "EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg4);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("查询异常" + ex.Message);
+                        return;
+                    }
+                    Factor = dataset.Tables[0].Rows[0][0].ToString();
+                    FactorD = Factor.Split(';');
+                    for (int i = 0; i < FactorD.Count(); i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                cbox41.Text = FactorD[i];
+                                break;
+                            case 1:
+                                cbox42.Text = FactorD[i];
+                                break;
+                            case 2:
+                                cbox43.Text = FactorD[i];
+                                break;
+                            default:
+                                break;
+
+                        }
                     }
                 }
 
-
-
-                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("Factor", "EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg2);
-                Factor = dataset.Tables[0].Rows[0][0].ToString();
-                FactorD = Factor.Split(';');
-                for (int i = 0; i < FactorD.Count(); i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            cbox21.Text = FactorD[i];
-                            break;
-                        case 1:
-                            cbox22.Text = FactorD[i];
-                            break;
-                        case 2:
-                            cbox23.Text = FactorD[i];
-                            break;
-                        default:
-                            break;
-
-                    }
-                }
-
-
-                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("Factor", "EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg3);
-                Factor = dataset.Tables[0].Rows[0][0].ToString();
-                FactorD = Factor.Split(';');
-                for (int i = 0; i < FactorD.Count(); i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            cbox31.Text = FactorD[i];
-                            break;
-                        case 1:
-                            cbox32.Text = FactorD[i];
-                            break;
-                        case 2:
-                            cbox33.Text = FactorD[i];
-                            break;
-                        default:
-                            break;
-
-                    }
-                }
-
-
-                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("Factor", "EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg4);
-                Factor = dataset.Tables[0].Rows[0][0].ToString();
-                FactorD = Factor.Split(';');
-                for (int i = 0; i < FactorD.Count(); i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            cbox41.Text = FactorD[i];
-                            break;
-                        case 1:
-                            cbox42.Text = FactorD[i];
-                            break;
-                        case 2:
-                            cbox43.Text = FactorD[i];
-                            break;
-                        default:
-                            break;
-
-                    }
-                }
-            }
-
+            
         }
+
 
         private void FreshDG()
         {
@@ -239,54 +281,84 @@ namespace Gas_test2.WinUI.CtrlView
         private void FreshTree()
         {
             DataSet dataset2 = new DataSet();
-
-            dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipName", "EquipTypeSlet");
-            Tree_Alg.Nodes.Clear();
-            int j = 0;
-            foreach (DataRow dr in dataset.Tables[0].Rows)
-            {
-                string equipname = dataset.Tables[0].Rows[j]["EquipName"].ToString();
-                TreeNode tn = Tree_Alg.Nodes.Add(equipname);
-
-                dataset2.Clear();
-                dataset2 = ServiceContainer.GetService<IGasDAL>().QueryData("EquipAlgSlet", "EquipName", equipname);
-
-                int k = 0;
-                foreach (DataRow dr2 in dataset2.Tables[0].Rows)
+           
+                dataset.Clear();
+                try
                 {
-                    string Factor;
-
-                    TreeNode tn1 = new TreeNode(dataset2.Tables[0].Rows[k]["AlgName"].ToString());
-                    tn.Nodes.Add(tn1);
-                    Factor = dataset2.Tables[0].Rows[k]["Factor"].ToString();
-                    string[] L1D = Factor.Split(';');
-                    for (int i = 0; i < L1D.Count() - 1; i++)
-                    {
-                        TreeNode tn12 = new TreeNode(L1D[i]);
-                        tn1.Nodes.Add(tn12);
-                    }
-
-
-                    k++;
+                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipName", "EquipTypeSlet");
                 }
-                j++;
-            }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
+                Tree_Alg.Nodes.Clear();
+                int j = 0;
+                foreach (DataRow dr in dataset.Tables[0].Rows)
+                {
+                    string equipname = dataset.Tables[0].Rows[j]["EquipName"].ToString();
+                    TreeNode tn = Tree_Alg.Nodes.Add(equipname);
+
+                    dataset2.Clear();
+                    try
+                    {
+                    dataset2 = ServiceContainer.GetService<IGasDAL>().QueryData("EquipAlgSlet", "EquipName", equipname);
+                     }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("查询异常" + ex.Message);
+                        return;
+                    }
+                    int k = 0;
+                    foreach (DataRow dr2 in dataset2.Tables[0].Rows)
+                    {
+                        string Factor;
+
+                        TreeNode tn1 = new TreeNode(dataset2.Tables[0].Rows[k]["AlgName"].ToString());
+                        tn.Nodes.Add(tn1);
+                        Factor = dataset2.Tables[0].Rows[k]["Factor"].ToString();
+                        string[] L1D = Factor.Split(';');
+                        for (int i = 0; i < L1D.Count() - 1; i++)
+                        {
+                            TreeNode tn12 = new TreeNode(L1D[i]);
+                            tn1.Nodes.Add(tn12);
+                        }
+
+
+                        k++;
+                    }
+                    j++;
+                }
+            
         }
+
+
+
 
         private void FreshCbox()
         {
-            cbox_Eq.Items.Clear();
-            dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipName", "EquipTypeSlet");
-            int j = 0;
-            foreach (DataRow dr in dataset.Tables[0].Rows)
-            {
-                cbox_Eq.Items.Add(dataset.Tables[0].Rows[j][0]);
-                j++;
-            }
-            cbox_Eq.SelectedIndex = 0;
+            
+                cbox_Eq.Items.Clear();
+                dataset.Clear();
+                try
+                {
+                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipName", "EquipTypeSlet");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
+                int j = 0;
+                foreach (DataRow dr in dataset.Tables[0].Rows)
+                {
+                    cbox_Eq.Items.Add(dataset.Tables[0].Rows[j][0]);
+                    j++;
+                }
+                cbox_Eq.SelectedIndex = 0;
+            
         }
+
 
         private void Tree_Alg_DoubleClick(object sender, EventArgs e)
         {
@@ -300,24 +372,42 @@ namespace Gas_test2.WinUI.CtrlView
 
         private void btn_Enter_Click(object sender, EventArgs e)
         {
+             
             if (cbox_Eq.Text.Trim() != "")
             {
                 //删除行
+                try
+                {
                 ServiceContainer.GetService<IGasDAL>().DeleteData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim());
+                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("删除异常" + ex.Message);
+                 }
                 //添加
                 string Factor = "";
                 Factor = cbox11.Text + ";" + cbox12.Text + ";" + cbox13.Text + ";";
-                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg1, "Factor", Factor);
-                Factor = cbox21.Text + ";" + cbox22.Text + ";" + cbox23.Text + ";";
-                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg2, "Factor", Factor);
-                Factor = cbox31.Text + ";" + cbox32.Text + ";" + cbox33.Text + ";";
-                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg3, "Factor", Factor);
-                Factor = cbox41.Text + ";" + cbox42.Text + ";" + cbox43.Text + ";";
+                 try
+                {
+                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg1, "Factor", Factor);                 
+                Factor = cbox21.Text + ";" + cbox22.Text + ";" + cbox23.Text + ";";                
+                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg2, "Factor", Factor);                
+                Factor = cbox31.Text + ";" + cbox32.Text + ";" + cbox33.Text + ";";                
+                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg3, "Factor", Factor);               
+                Factor = cbox41.Text + ";" + cbox42.Text + ";" + cbox43.Text + ";";                 
                 ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg4, "Factor", Factor);
+                 }
+                 catch (Exception ex)
+                 {
+                     Console.WriteLine("添加异常" + ex.Message);
+                 }
 
             }
             FreshTree();
 
-        }
+        
+        
+}
     }
 }
+

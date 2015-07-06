@@ -61,11 +61,18 @@ namespace Gas_test2.WinUI.CtrlView
 
         public void NoUD_ValueChanged(object sender, EventArgs e)
         {
-            if (NoUD.Value != 0)
+            try
             {
-                ServiceContainer.GetService<IGasDAL>().UpdateData("GasometerType", "GasometerNum", bNum.ToString(), "GasometerName", bName);
+                if (NoUD.Value != 0)
+                {
+                    ServiceContainer.GetService<IGasDAL>().UpdateData("GasometerType", "GasometerNum", bNum.ToString(), "GasometerName", bName);
+                }
             }
-
+            catch(Exception ex)
+            {
+                Console.WriteLine("更新异常" + ex.Message);
+                return;
+            }
         }
 
         private void banner_Load(object sender, EventArgs e)

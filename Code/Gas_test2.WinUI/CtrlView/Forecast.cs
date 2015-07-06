@@ -51,40 +51,57 @@ namespace Gas_test2.WinUI.CtrlView
 
         private void Forecast_Load(object sender, EventArgs e)
         {
-
-            dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet");
-            DataView dvList = new DataView(dataset.Tables[0]);
-
-            foreach (DataRowView dv in dvList)
-            {
-                if (ModuleClass.FuncClass.ActivContrl[0].ToString() == dv["EquipName"].ToString())
+            
+                dataset.Clear();
+                try
                 {
-                    lab_Eq.Text = "选择" + dv["EquipName"].ToString() + "设备号";
-                    for (int i = 0; i < int.Parse(dv["EquipNum"].ToString()); i++)
+                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet");
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                }
+                DataView dvList = new DataView(dataset.Tables[0]);
+
+                foreach (DataRowView dv in dvList)
+                {
+                    if (ModuleClass.FuncClass.ActivContrl[0].ToString() == dv["EquipName"].ToString())
                     {
-                        cbox1.Items.Add((i+1) + "#设备");
+                        lab_Eq.Text = "选择" + dv["EquipName"].ToString() + "设备号";
+                        for (int i = 0; i < int.Parse(dv["EquipNum"].ToString()); i++)
+                        {
+                            cbox1.Items.Add((i + 1) + "#设备");
+                        }
                     }
                 }
-            }
 
-            dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData("AlgName", "EquipAlgSlet", "EquipName", ModuleClass.FuncClass.ActivContrl[0]);
-            DataView dvList1 = new DataView(dataset.Tables[0]);
-
-            foreach (DataRowView dv in dvList1)
+                dataset.Clear();
+            try
+                {
+                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("AlgName", "EquipAlgSlet", "EquipName", ModuleClass.FuncClass.ActivContrl[0]);
+                }
+            catch (Exception ex)
             {
-                
-                cbox2.Items.Add(dv["AlgName"].ToString());
-                
+                Console.WriteLine("查询异常" + ex.Message);
             }
+                DataView dvList1 = new DataView(dataset.Tables[0]);
 
-            SetSize();
+                foreach (DataRowView dv in dvList1)
+                {
 
-            timer1.Interval = 1000;
-            timer1.Enabled = true;
+                    cbox2.Items.Add(dv["AlgName"].ToString());
+
+                }
+
+                SetSize();
+
+                timer1.Interval = 1000;
+                timer1.Enabled = true;
 
         }
+        
+
 
         private void btn_Para_Click(object sender, EventArgs e)
         {
@@ -136,7 +153,7 @@ namespace Gas_test2.WinUI.CtrlView
             GraphPane myPane = zg.GraphPane;
             myPane.CurveList.Clear();
             myPane.GraphObjList.Clear();
-            
+
             //Set labels
             myPane.Title.Text = "煤气预测值";// 表头
             myPane.XAxis.Title.Text = "时间";// 横坐标lable
@@ -144,74 +161,75 @@ namespace Gas_test2.WinUI.CtrlView
             //Set list
             PointPairList list = new PointPairList();
 
-            //dataset.Clear();
-            //dataset = ServiceContainer.GetService<IGasDAL>().QueryData(ModuleClass.FuncClass.ActivContrl[0].ToString() + cbox1.Text+cbox2.Text + "FCST");
-            DataView dvList = new DataView(dataset.Tables[0]);
-            foreach (DataRowView dv in dvList)
-            {
-                //for (int i = 0; i < 100; i++)
-                //{
-                //    DateTime xx = DateTime.Parse(dv["TIME"].ToString());
-                //    double x = (double)new XDate(xx);
-                //    if (dv["FFLOW"] is DBNull)
-                //        dv["FFLOW"] = 500;
-                //    double y = Convert.ToDouble(dv["FFLOW"]);
+              //dataset.Clear();
+                //dataset = ServiceContainer.GetService<IGasDAL>().QueryData(ModuleClass.FuncClass.ActivContrl[0].ToString() + cbox1.Text+cbox2.Text + "FCST");
+                DataView dvList = new DataView(dataset.Tables[0]);
+                foreach (DataRowView dv in dvList)
+                {
+                    //for (int i = 0; i < 100; i++)
+                    //{
+                    //    DateTime xx = DateTime.Parse(dv["TIME"].ToString());
+                    //    double x = (double)new XDate(xx);
+                    //    if (dv["FFLOW"] is DBNull)
+                    //        dv["FFLOW"] = 500;
+                    //    double y = Convert.ToDouble(dv["FFLOW"]);
 
-                //    list.Add(x, y);
-                //}
+                    //    list.Add(x, y);
+                    //}
 
-                DateTime xx = DateTime.Parse(dv["TIME"].ToString());
-                double x = (double)new XDate(xx);
-                if (dv["FFLOW"] is DBNull)
-                    dv["FFLOW"] = 500;
-                double y = Convert.ToDouble(dv["FFLOW"]);
+                    DateTime xx = DateTime.Parse(dv["TIME"].ToString());
+                    double x = (double)new XDate(xx);
+                    if (dv["FFLOW"] is DBNull)
+                        dv["FFLOW"] = 500;
+                    double y = Convert.ToDouble(dv["FFLOW"]);
 
 
-                list.Add(x, y);
+                    list.Add(x, y);
 
-            }
+                }
+
+
+
+                /*            
+                 List<HRGasReal> tempList = vList.ToList();
             
-            
-          
-            /*            
-             List<HRGasReal> tempList = vList.ToList();
-            
-            for (int i = 0; i < 100; i++)
-            {
-                double C = tempList[i].Consumption;
-                DateTime T = tempList[i].Time;
+                for (int i = 0; i < 100; i++)
+                {
+                    double C = tempList[i].Consumption;
+                    DateTime T = tempList[i].Time;
 
-                double x = Convert.ToDouble(i);
-                double y = Convert.ToDouble(C);
-                list.Add(x, y);
-            }
-            */
-            /*//DateTime m = Convert.ToDateTime(DG1.Columns[1]);
-            Double n = Convert.ToDouble( DG1.Columns[2]);
-            list.Add(m, n);
-            for (int i = 0; i < 100; i++)
-            {
-                double x = (double)new XDate(2013, 6,11,i,0,0);
+                    double x = Convert.ToDouble(i);
+                    double y = Convert.ToDouble(C);
+                    list.Add(x, y);
+                }
+                */
+                /*//DateTime m = Convert.ToDateTime(DG1.Columns[1]);
+                Double n = Convert.ToDouble( DG1.Columns[2]);
+                list.Add(m, n);
+                for (int i = 0; i < 100; i++)
+                {
+                    double x = (double)new XDate(2013, 6,11,i,0,0);
                 
-                double y = Math.Sin((double)i * Math.PI / 15.0); 
+                    double y = Math.Sin((double)i * Math.PI / 15.0); 
 
-                list.Add(x, y);
-            }*/
+                    list.Add(x, y);
+                }*/
 
-            // Generate a blue curve with circle symbols, and "My Curve 2" in the legend
-            LineItem myCurve = myPane.AddCurve("煤气量", list, Color.Blue, SymbolType.Circle);
-            // Fill the area under the curve with a white-red gradient at 45 degrees
-            myCurve.Line.Fill = new Fill(Color.White, Color.Red, 45F);
-            // Make the symbols opaque by filling them with white
-            myCurve.Symbol.Fill = new Fill(Color.White);
-            // Fill the axis background with a color gradient
-            myPane.Chart.Fill = new Fill(Color.White, Color.LightGoldenrodYellow, 45F);
-            // Fill the pane background with a color gradient
-            myPane.Fill = new Fill(Color.White, Color.FromArgb(220, 220, 255), 45F);
-            //Calculate the Axis Scale Ranges
-            myPane.XAxis.Type = AxisType.Date;
+                // Generate a blue curve with circle symbols, and "My Curve 2" in the legend
+                LineItem myCurve = myPane.AddCurve("煤气量", list, Color.Blue, SymbolType.Circle);
+                // Fill the area under the curve with a white-red gradient at 45 degrees
+                myCurve.Line.Fill = new Fill(Color.White, Color.Red, 45F);
+                // Make the symbols opaque by filling them with white
+                myCurve.Symbol.Fill = new Fill(Color.White);
+                // Fill the axis background with a color gradient
+                myPane.Chart.Fill = new Fill(Color.White, Color.LightGoldenrodYellow, 45F);
+                // Fill the pane background with a color gradient
+                myPane.Fill = new Fill(Color.White, Color.FromArgb(220, 220, 255), 45F);
+                //Calculate the Axis Scale Ranges
+                myPane.XAxis.Type = AxisType.Date;
 
-            myPane.AxisChange();
+                myPane.AxisChange();
+           
         }
 
 
@@ -270,20 +288,29 @@ namespace Gas_test2.WinUI.CtrlView
                 MessageBox.Show("预测出错：" + exc.Message);
                 return;
             }
-             */ 
+             */
 
+            try
+            {
+                dataset = ServiceContainer.GetService<IGasDAL>().QueryData("TIME,FFLOW", ModuleClass.FuncClass.ActivContrl[0].ToString() + "0_" + cbox2.Text.Trim() + "_FCST");
 
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData("TIME,FFLOW", ModuleClass.FuncClass.ActivContrl[0].ToString() + "0_" + cbox2.Text.Trim() + "_FCST");
-            ////设置DG
-            DG1.DataSource = dataset.Tables[0];
-            
-            /////画图
-            SetGragh(zg1);
-            SetSize();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
+                ////设置DG
+                DG1.DataSource = dataset.Tables[0];
+
+                /////画图
+                SetGragh(zg1);
+                SetSize();
 
 
 
         }
+
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
@@ -323,8 +350,15 @@ namespace Gas_test2.WinUI.CtrlView
             string starttime="2013-06-17 "+t+":36:00.000";
             string endtime = "2013-06-17 "+(t+1)+":36:00.000";
 
-
+            try
+                {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("TIME,FFLOW", ModuleClass.FuncClass.ActivContrl[0].ToString() + "0_" + cbox2.Text.Trim() + "_FCST", "TIME", starttime, endtime);
+                }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             ////设置DG
             DG1.DataSource = dataset.Tables[0];
 

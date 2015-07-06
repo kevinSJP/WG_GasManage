@@ -73,12 +73,14 @@ namespace Gas_test2.WinUI
             if (lbox_Type.SelectedItems.Count != 0)
             {
                 dataset.Clear();
+                
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData("AlgRoute", "AlgTypeAbl", "AlgName", lbox_Type.SelectedItem.ToString());
                 textBox1.Text = dataset.Tables[0].Rows[0][0].ToString();
 
                 dataset.Clear();
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData("AlgParaRoute", "AlgTypeAbl", "AlgName", lbox_Type.SelectedItem.ToString());
                 textBox2.Text = dataset.Tables[0].Rows[0][0].ToString();
+               
 
                 using (StreamReader sr = new StreamReader(textBox2.Text))
                 {
@@ -133,7 +135,15 @@ namespace Gas_test2.WinUI
                 {
                     string fileName = openFileDialog1.FileName; //得到文件名 
                     textBox2.Text = fileName;
+                    try
+                    {
                     ServiceContainer.GetService<IGasDAL>().UpdateData("AlgTypeAbl", "AlgParaRoute", fileName, "AlgName", lbox_Type.SelectedItem.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("刷新数据异常" + ex.Message);
+                        return;
+                    }
 
 
                     using (StreamReader sr = new StreamReader(fileName))
@@ -171,9 +181,15 @@ namespace Gas_test2.WinUI
         private void FreshLbox(string cloum, string tab)
         {
             dataset.Clear();
-
+            try
+                {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData(cloum, tab);
-
+                }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             int j = 0;
             foreach (DataRow dr in dataset.Tables[0].Rows)
             {

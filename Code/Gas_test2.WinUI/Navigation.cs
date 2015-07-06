@@ -54,7 +54,15 @@ namespace Gas_test2.WinUI
         {
             //Menustripe修改
             //dataset = ServiceContainer.GetService<IGasDAL>().QueryData( "EquipTypeSlet");
+            try
+            {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData( "EquipTypeSlet", "Selected", "1");
+             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
 
             //检查判断DataSet数据是否完整
             if (CheckData(dataset))

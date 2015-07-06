@@ -49,8 +49,17 @@ namespace Gas_test2.WinUI.CtrlView
         {
 
             dataset.Clear();
+            try
+                {
             dataset = ServiceContainer.GetService<IGasDAL>().QueryData("EquipTypeSlet");
+                }
+            catch (Exception ex)
+            {
+                Console.WriteLine("查询异常" + ex.Message);
+                return;
+            }
             DataView dvList = new DataView(dataset.Tables[0]);
+
             
             foreach (DataRowView dv in dvList)
             {
@@ -86,17 +95,41 @@ namespace Gas_test2.WinUI.CtrlView
             dataset.Clear();
             if(CkListBox1.GetItemChecked(0))
             {
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData("TIME , FLOW",ModuleClass.FuncClass.ActivContrl[1].ToString() + Num[0] + "_REAL", "TIME", StartTime, EndTime);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
 
                 //dataset = ServiceContainer.GetService<IGasDAL>().QueryData(ModuleClass.FuncClass.ActivContrl[1].ToString() + Num[0] + "_REAL");
             }
             if (CkListBox1.GetItemChecked(1))
             {
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData(ModuleClass.FuncClass.ActivContrl[1].ToString() + Num[0] + "_FCST");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
             }
             if (CkListBox1.GetItemChecked(2))
             {
+                try
+                {
                 dataset = ServiceContainer.GetService<IGasDAL>().QueryData(ModuleClass.FuncClass.ActivContrl[1].ToString() + Num[0] + "_REAL");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
             }
 
             ////设置DG

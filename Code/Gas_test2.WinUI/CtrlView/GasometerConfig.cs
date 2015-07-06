@@ -72,33 +72,43 @@ namespace Gas_test2.WinUI.CtrlView
             */
             //if (listbox == "lbox_Gasometer")
             //{}
-            lbox_Gasometer.Items.Clear();
-            panel1.Controls.Clear();
-            dataset.Clear();
-            dataset = ServiceContainer.GetService<IGasDAL>().QueryData(tab);
-            int j = 0;
-            foreach (DataRow dr in dataset.Tables[0].Rows)
-            {
-                //Listbox
-                lbox_Gasometer.Items.Add(dataset.Tables[0].Rows[j][cloum]);
+            
+                lbox_Gasometer.Items.Clear();
+                panel1.Controls.Clear();
+                dataset.Clear();
+                try
+                {
+                dataset = ServiceContainer.GetService<IGasDAL>().QueryData(tab);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("查询异常" + ex.Message);
+                    return;
+                }
+                int j = 0;
+                foreach (DataRow dr in dataset.Tables[0].Rows)
+                {
+                    //Listbox
+                    lbox_Gasometer.Items.Add(dataset.Tables[0].Rows[j][cloum]);
 
-                //Panel
+                    //Panel
 
-                Panel panelBar = new Panel();
-                panel1.Controls.Add(panelBar);
-                panelBar.BorderStyle = BorderStyle.FixedSingle;
-                panelBar.Location = new Point(10, 10 + panel1.Height * j / 4);
-                panelBar.Size = new Size(this.ClientRectangle.Width, this.ClientRectangle.Height / 4);
+                    Panel panelBar = new Panel();
+                    panel1.Controls.Add(panelBar);
+                    panelBar.BorderStyle = BorderStyle.FixedSingle;
+                    panelBar.Location = new Point(10, 10 + panel1.Height * j / 4);
+                    panelBar.Size = new Size(this.ClientRectangle.Width, this.ClientRectangle.Height / 4);
 
-                banner bar = new banner();
-                bar.LabelText = dataset.Tables[0].Rows[j][cloum].ToString() + "数量：";
-                bar.UDNum = int.Parse(dataset.Tables[0].Rows[j]["GasometerNum"].ToString());
-                panelBar.Controls.Add(bar);
+                    banner bar = new banner();
+                    bar.LabelText = dataset.Tables[0].Rows[j][cloum].ToString() + "数量：";
+                    bar.UDNum = int.Parse(dataset.Tables[0].Rows[j]["GasometerNum"].ToString());
+                    panelBar.Controls.Add(bar);
 
-                j++;
-            }
+                    j++;
+                }
 
 
+           
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
