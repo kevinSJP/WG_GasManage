@@ -47,7 +47,9 @@ namespace Gas_test2.WinUI
         private void ForecastConfig_Load(object sender, EventArgs e)
         {
             FreshDG();
+            FreshCbox();
         }
+
 
         private void FreshDG()
         {
@@ -75,6 +77,7 @@ namespace Gas_test2.WinUI
                 DataGridViewTextBoxCell txtboxcell0 = new DataGridViewTextBoxCell();
                 txtboxcell0.Value = dataset.Tables[0].Rows[j]["EquipName"];
                 row.Cells.Add(txtboxcell0);
+                txtboxcell0.ReadOnly = true;
 
                 DataGridViewComboBoxCell comboxcell = new DataGridViewComboBoxCell();
                 try
@@ -96,27 +99,51 @@ namespace Gas_test2.WinUI
                     i++;
                 }
                 row.Cells.Add(comboxcell);
+                
                 //comboxcell.DisplayMember=;
 
-                DataGridViewComboBoxCell comboxcel2 = new DataGridViewComboBoxCell();
-                comboxcel2.Items.Add("5");
-                comboxcel2.Items.Add("10");
-                row.Cells.Add(comboxcel2);
-                comboxcel2.Value = "10";
+                //DataGridViewComboBoxCell comboxcel2 = new DataGridViewComboBoxCell();
+                //comboxcel2.Items.Add("5");
+                //comboxcel2.Items.Add("10");
+                //row.Cells.Add(comboxcel2);
+                //comboxcel2.Value = "10";
 
-                DataGridViewComboBoxCell comboxcel3 = new DataGridViewComboBoxCell();
-                comboxcel3.Items.Add("15");
-                comboxcel3.Items.Add("30");
-                comboxcel3.Items.Add("60");
-                row.Cells.Add(comboxcel3);
-                comboxcel3.Value = "30";
+                //DataGridViewComboBoxCell comboxcel3 = new DataGridViewComboBoxCell();
+                //comboxcel3.Items.Add("15");
+                //comboxcel3.Items.Add("30");
+                //comboxcel3.Items.Add("60");
+                //row.Cells.Add(comboxcel3);
+                //comboxcel3.Value = "30";
 
                 DG_Forecast.Rows.Add(row);
 
 
                 j++;
             }
+            DG_Forecast.AllowUserToAddRows = false;
         }
+
+        private void FreshCbox()
+        {
+            cbox_Triger.Items.Clear();
+            cbox_Triger.Items.Add("5");
+            cbox_Triger.Items.Add("10");
+            cbox_Triger.Text = "10";
+
+            cbox_Duration.Items.Clear();
+            cbox_Duration.Items.Add("15");
+            cbox_Duration.Items.Add("30");
+            cbox_Duration.Items.Add("60");
+            cbox_Duration.Text = "15";
+        }
+
+        private void btn_Enter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
 
 
 

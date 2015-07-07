@@ -34,7 +34,7 @@ namespace Gas_test2.WinUI.CtrlView
         {
             FreshCbox();
             FreshTree();
-            FreshDG();
+            //FreshDG();
             InitFactor();
             FreshFactor();
         }
@@ -112,24 +112,29 @@ namespace Gas_test2.WinUI.CtrlView
                         Console.WriteLine("查询异常" + ex.Message);
                         return;
                     }
-                        string Factor = dataset.Tables[0].Rows[0][0].ToString();
-                    string[] FactorD = Factor.Split(';');
-                    for (int i = 0; i < FactorD.Count(); i++)
+                    string Factor;
+                    string[] FactorD;
+                    if (dataset.Tables[0].Rows.Count != 0)
                     {
-                        switch (i)
+                        Factor = dataset.Tables[0].Rows[0][0].ToString();
+                        FactorD = Factor.Split(';');
+                        for (int i = 0; i < FactorD.Count(); i++)
                         {
-                            case 0:
-                                cbox11.Text = FactorD[i];
-                                break;
-                            case 1:
-                                cbox12.Text = FactorD[i];
-                                break;
-                            case 2:
-                                cbox13.Text = FactorD[i];
-                                break;
-                            default:
-                                break;
+                            switch (i)
+                            {
+                                case 0:
+                                    cbox11.Text = FactorD[i];
+                                    break;
+                                case 1:
+                                    cbox12.Text = FactorD[i];
+                                    break;
+                                case 2:
+                                    cbox13.Text = FactorD[i];
+                                    break;
+                                default:
+                                    break;
 
+                            }
                         }
                     }
 
@@ -143,24 +148,27 @@ namespace Gas_test2.WinUI.CtrlView
                         Console.WriteLine("抛出异常" + ex.Message);
                         return;
                     }
-                    Factor = dataset.Tables[0].Rows[0][0].ToString();
-                    FactorD = Factor.Split(';');
-                    for (int i = 0; i < FactorD.Count(); i++)
+                    if (dataset.Tables[0].Rows.Count != 0)
                     {
-                        switch (i)
+                        Factor = dataset.Tables[0].Rows[0][0].ToString();
+                        FactorD = Factor.Split(';');
+                        for (int i = 0; i < FactorD.Count(); i++)
                         {
-                            case 0:
-                                cbox21.Text = FactorD[i];
-                                break;
-                            case 1:
-                                cbox22.Text = FactorD[i];
-                                break;
-                            case 2:
-                                cbox23.Text = FactorD[i];
-                                break;
-                            default:
-                                break;
+                            switch (i)
+                            {
+                                case 0:
+                                    cbox21.Text = FactorD[i];
+                                    break;
+                                case 1:
+                                    cbox22.Text = FactorD[i];
+                                    break;
+                                case 2:
+                                    cbox23.Text = FactorD[i];
+                                    break;
+                                default:
+                                    break;
 
+                            }
                         }
                     }
 
@@ -173,24 +181,27 @@ namespace Gas_test2.WinUI.CtrlView
                         Console.WriteLine("查询异常" + ex.Message);
                         return;
                     }
-                    Factor = dataset.Tables[0].Rows[0][0].ToString();
-                    FactorD = Factor.Split(';');
-                    for (int i = 0; i < FactorD.Count(); i++)
+                    if (dataset.Tables[0].Rows.Count != 0)
                     {
-                        switch (i)
+                        Factor = dataset.Tables[0].Rows[0][0].ToString();
+                        FactorD = Factor.Split(';');
+                        for (int i = 0; i < FactorD.Count(); i++)
                         {
-                            case 0:
-                                cbox31.Text = FactorD[i];
-                                break;
-                            case 1:
-                                cbox32.Text = FactorD[i];
-                                break;
-                            case 2:
-                                cbox33.Text = FactorD[i];
-                                break;
-                            default:
-                                break;
+                            switch (i)
+                            {
+                                case 0:
+                                    cbox31.Text = FactorD[i];
+                                    break;
+                                case 1:
+                                    cbox32.Text = FactorD[i];
+                                    break;
+                                case 2:
+                                    cbox33.Text = FactorD[i];
+                                    break;
+                                default:
+                                    break;
 
+                            }
                         }
                     }
 
@@ -203,24 +214,27 @@ namespace Gas_test2.WinUI.CtrlView
                         Console.WriteLine("查询异常" + ex.Message);
                         return;
                     }
-                    Factor = dataset.Tables[0].Rows[0][0].ToString();
-                    FactorD = Factor.Split(';');
-                    for (int i = 0; i < FactorD.Count(); i++)
+                    if (dataset.Tables[0].Rows.Count != 0)
                     {
-                        switch (i)
+                        Factor = dataset.Tables[0].Rows[0][0].ToString();
+                        FactorD = Factor.Split(';');
+                        for (int i = 0; i < FactorD.Count(); i++)
                         {
-                            case 0:
-                                cbox41.Text = FactorD[i];
-                                break;
-                            case 1:
-                                cbox42.Text = FactorD[i];
-                                break;
-                            case 2:
-                                cbox43.Text = FactorD[i];
-                                break;
-                            default:
-                                break;
+                            switch (i)
+                            {
+                                case 0:
+                                    cbox41.Text = FactorD[i];
+                                    break;
+                                case 1:
+                                    cbox42.Text = FactorD[i];
+                                    break;
+                                case 2:
+                                    cbox43.Text = FactorD[i];
+                                    break;
+                                default:
+                                    break;
 
+                            }
                         }
                     }
                 }
@@ -367,7 +381,9 @@ namespace Gas_test2.WinUI.CtrlView
 
         private void cbox_Eq_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FreshDG();
+            //FreshDG();
+            InitFactor();
+            FreshFactor();
         }
 
         private void btn_Enter_Click(object sender, EventArgs e)
@@ -386,21 +402,84 @@ namespace Gas_test2.WinUI.CtrlView
                  }
                 //添加
                 string Factor = "";
-                Factor = cbox11.Text + ";" + cbox12.Text + ";" + cbox13.Text + ";";
+
+                //Factor = cbox11.Text + ";" + cbox12.Text + ";" + cbox13.Text + ";";
+                if (cbox11.Text != "")
+                {
+                    Factor += Factor + cbox11.Text+";";
+                }
+                if (cbox12.Text != "")
+                {
+                    Factor += Factor + cbox12.Text + ";";
+                }
+                if (cbox13.Text != "")
+                {
+                    Factor += Factor + cbox13.Text + ";";
+                }
                  try
                 {
-                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg1, "Factor", Factor);                 
-                Factor = cbox21.Text + ";" + cbox22.Text + ";" + cbox23.Text + ";";                
-                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg2, "Factor", Factor);                
-                Factor = cbox31.Text + ";" + cbox32.Text + ";" + cbox33.Text + ";";                
-                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg3, "Factor", Factor);               
-                Factor = cbox41.Text + ";" + cbox42.Text + ";" + cbox43.Text + ";";                 
-                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg4, "Factor", Factor);
-                 }
+                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg1, "Factor", Factor);
+                }
                  catch (Exception ex)
                  {
                      Console.WriteLine("添加异常" + ex.Message);
                  }
+
+                Factor = cbox21.Text + ";" + cbox22.Text + ";" + cbox23.Text + ";";   
+                try
+                {
+                ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg2, "Factor", Factor); 
+                }
+                catch (Exception ex)
+                 {
+                     Console.WriteLine("添加异常" + ex.Message);
+                 }
+                
+                //Factor = cbox31.Text + ";" + cbox32.Text + ";" + cbox33.Text + ";";
+                Factor = "";
+                if (cbox11.Text != "")
+                {
+                    Factor += Factor + cbox11.Text + ";";
+                }
+                if (cbox12.Text != "")
+                {
+                    Factor += Factor + cbox12.Text + ";";
+                }
+                if (cbox13.Text != "")
+                {
+                    Factor += Factor + cbox13.Text + ";";
+                }
+                try
+                {
+                    ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg3, "Factor", Factor);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("添加异常" + ex.Message);
+                }
+
+                //Factor = cbox41.Text + ";" + cbox42.Text + ";" + cbox43.Text + ";";
+                Factor = "";
+                if (cbox11.Text != "")
+                {
+                    Factor += Factor + cbox11.Text + ";";
+                }
+                if (cbox12.Text != "")
+                {
+                    Factor += Factor + cbox12.Text + ";";
+                }
+                if (cbox13.Text != "")
+                {
+                    Factor += Factor + cbox13.Text + ";";
+                }
+                try
+                {
+                    ServiceContainer.GetService<IGasDAL>().InsertData("EquipAlgSlet", "EquipName", cbox_Eq.Text.Trim(), "AlgName", Alg4, "Factor", Factor);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("添加异常" + ex.Message);
+                } 
 
             }
             FreshTree();

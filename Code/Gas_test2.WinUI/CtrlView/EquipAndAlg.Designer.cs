@@ -33,25 +33,25 @@
             this.gbox1 = new System.Windows.Forms.GroupBox();
             this.btn_Enter = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl_Alg1 = new System.Windows.Forms.Label();
-            this.cbox11 = new System.Windows.Forms.ComboBox();
-            this.cbox12 = new System.Windows.Forms.ComboBox();
-            this.cbox13 = new System.Windows.Forms.ComboBox();
-            this.lblF1 = new System.Windows.Forms.Label();
-            this.lblF2 = new System.Windows.Forms.Label();
-            this.lblF3 = new System.Windows.Forms.Label();
-            this.cbox23 = new System.Windows.Forms.ComboBox();
-            this.cbox22 = new System.Windows.Forms.ComboBox();
-            this.cbox21 = new System.Windows.Forms.ComboBox();
-            this.lbl_Alg2 = new System.Windows.Forms.Label();
-            this.cbox33 = new System.Windows.Forms.ComboBox();
-            this.cbox32 = new System.Windows.Forms.ComboBox();
-            this.cbox31 = new System.Windows.Forms.ComboBox();
-            this.lbl_Alg3 = new System.Windows.Forms.Label();
             this.cbox43 = new System.Windows.Forms.ComboBox();
             this.cbox42 = new System.Windows.Forms.ComboBox();
             this.cbox41 = new System.Windows.Forms.ComboBox();
             this.lbl_Alg4 = new System.Windows.Forms.Label();
+            this.cbox33 = new System.Windows.Forms.ComboBox();
+            this.cbox32 = new System.Windows.Forms.ComboBox();
+            this.cbox31 = new System.Windows.Forms.ComboBox();
+            this.lbl_Alg3 = new System.Windows.Forms.Label();
+            this.cbox23 = new System.Windows.Forms.ComboBox();
+            this.cbox22 = new System.Windows.Forms.ComboBox();
+            this.cbox21 = new System.Windows.Forms.ComboBox();
+            this.lbl_Alg2 = new System.Windows.Forms.Label();
+            this.lblF3 = new System.Windows.Forms.Label();
+            this.lblF2 = new System.Windows.Forms.Label();
+            this.lblF1 = new System.Windows.Forms.Label();
+            this.cbox13 = new System.Windows.Forms.ComboBox();
+            this.cbox12 = new System.Windows.Forms.ComboBox();
+            this.cbox11 = new System.Windows.Forms.ComboBox();
+            this.lbl_Alg1 = new System.Windows.Forms.Label();
             this.gbox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,7 @@
             // 
             // cbox_Eq
             // 
+            this.cbox_Eq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_Eq.FormattingEnabled = true;
             this.cbox_Eq.Location = new System.Drawing.Point(33, 31);
             this.cbox_Eq.Name = "cbox_Eq";
@@ -124,101 +125,45 @@
             this.panel1.Size = new System.Drawing.Size(642, 372);
             this.panel1.TabIndex = 8;
             // 
-            // lbl_Alg1
+            // cbox43
             // 
-            this.lbl_Alg1.AutoSize = true;
-            this.lbl_Alg1.Location = new System.Drawing.Point(31, 43);
-            this.lbl_Alg1.Name = "lbl_Alg1";
-            this.lbl_Alg1.Size = new System.Drawing.Size(41, 12);
-            this.lbl_Alg1.TabIndex = 0;
-            this.lbl_Alg1.Text = "BP算法";
+            this.cbox43.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox43.FormattingEnabled = true;
+            this.cbox43.Location = new System.Drawing.Point(436, 202);
+            this.cbox43.Name = "cbox43";
+            this.cbox43.Size = new System.Drawing.Size(121, 20);
+            this.cbox43.TabIndex = 18;
             // 
-            // cbox11
+            // cbox42
             // 
-            this.cbox11.FormattingEnabled = true;
-            this.cbox11.Location = new System.Drawing.Point(122, 40);
-            this.cbox11.Name = "cbox11";
-            this.cbox11.Size = new System.Drawing.Size(121, 20);
-            this.cbox11.TabIndex = 1;
+            this.cbox42.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox42.FormattingEnabled = true;
+            this.cbox42.Location = new System.Drawing.Point(274, 202);
+            this.cbox42.Name = "cbox42";
+            this.cbox42.Size = new System.Drawing.Size(121, 20);
+            this.cbox42.TabIndex = 17;
             // 
-            // cbox12
+            // cbox41
             // 
-            this.cbox12.FormattingEnabled = true;
-            this.cbox12.Location = new System.Drawing.Point(274, 40);
-            this.cbox12.Name = "cbox12";
-            this.cbox12.Size = new System.Drawing.Size(121, 20);
-            this.cbox12.TabIndex = 2;
+            this.cbox41.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox41.FormattingEnabled = true;
+            this.cbox41.Location = new System.Drawing.Point(122, 202);
+            this.cbox41.Name = "cbox41";
+            this.cbox41.Size = new System.Drawing.Size(121, 20);
+            this.cbox41.TabIndex = 16;
             // 
-            // cbox13
+            // lbl_Alg4
             // 
-            this.cbox13.FormattingEnabled = true;
-            this.cbox13.Location = new System.Drawing.Point(436, 40);
-            this.cbox13.Name = "cbox13";
-            this.cbox13.Size = new System.Drawing.Size(121, 20);
-            this.cbox13.TabIndex = 3;
-            // 
-            // lblF1
-            // 
-            this.lblF1.AutoSize = true;
-            this.lblF1.Location = new System.Drawing.Point(169, 7);
-            this.lblF1.Name = "lblF1";
-            this.lblF1.Size = new System.Drawing.Size(35, 12);
-            this.lblF1.TabIndex = 4;
-            this.lblF1.Text = "因素1";
-            // 
-            // lblF2
-            // 
-            this.lblF2.AutoSize = true;
-            this.lblF2.Location = new System.Drawing.Point(305, 7);
-            this.lblF2.Name = "lblF2";
-            this.lblF2.Size = new System.Drawing.Size(35, 12);
-            this.lblF2.TabIndex = 5;
-            this.lblF2.Text = "因素2";
-            // 
-            // lblF3
-            // 
-            this.lblF3.AutoSize = true;
-            this.lblF3.Location = new System.Drawing.Point(480, 7);
-            this.lblF3.Name = "lblF3";
-            this.lblF3.Size = new System.Drawing.Size(35, 12);
-            this.lblF3.TabIndex = 6;
-            this.lblF3.Text = "因素3";
-            // 
-            // cbox23
-            // 
-            this.cbox23.FormattingEnabled = true;
-            this.cbox23.Location = new System.Drawing.Point(436, 95);
-            this.cbox23.Name = "cbox23";
-            this.cbox23.Size = new System.Drawing.Size(121, 20);
-            this.cbox23.TabIndex = 10;
-            // 
-            // cbox22
-            // 
-            this.cbox22.FormattingEnabled = true;
-            this.cbox22.Location = new System.Drawing.Point(274, 95);
-            this.cbox22.Name = "cbox22";
-            this.cbox22.Size = new System.Drawing.Size(121, 20);
-            this.cbox22.TabIndex = 9;
-            // 
-            // cbox21
-            // 
-            this.cbox21.FormattingEnabled = true;
-            this.cbox21.Location = new System.Drawing.Point(122, 95);
-            this.cbox21.Name = "cbox21";
-            this.cbox21.Size = new System.Drawing.Size(121, 20);
-            this.cbox21.TabIndex = 8;
-            // 
-            // lbl_Alg2
-            // 
-            this.lbl_Alg2.AutoSize = true;
-            this.lbl_Alg2.Location = new System.Drawing.Point(31, 98);
-            this.lbl_Alg2.Name = "lbl_Alg2";
-            this.lbl_Alg2.Size = new System.Drawing.Size(47, 12);
-            this.lbl_Alg2.TabIndex = 7;
-            this.lbl_Alg2.Text = "RBF算法";
+            this.lbl_Alg4.AutoSize = true;
+            this.lbl_Alg4.Location = new System.Drawing.Point(31, 205);
+            this.lbl_Alg4.Name = "lbl_Alg4";
+            this.lbl_Alg4.Size = new System.Drawing.Size(53, 12);
+            this.lbl_Alg4.TabIndex = 15;
+            this.lbl_Alg4.Text = "多层递阶";
             // 
             // cbox33
             // 
+            this.cbox33.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox33.FormattingEnabled = true;
             this.cbox33.Location = new System.Drawing.Point(436, 145);
             this.cbox33.Name = "cbox33";
@@ -227,6 +172,7 @@
             // 
             // cbox32
             // 
+            this.cbox32.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox32.FormattingEnabled = true;
             this.cbox32.Location = new System.Drawing.Point(274, 145);
             this.cbox32.Name = "cbox32";
@@ -235,6 +181,7 @@
             // 
             // cbox31
             // 
+            this.cbox31.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox31.FormattingEnabled = true;
             this.cbox31.Location = new System.Drawing.Point(122, 145);
             this.cbox31.Name = "cbox31";
@@ -250,38 +197,104 @@
             this.lbl_Alg3.TabIndex = 11;
             this.lbl_Alg3.Text = "多元线性回归";
             // 
-            // cbox43
+            // cbox23
             // 
-            this.cbox43.FormattingEnabled = true;
-            this.cbox43.Location = new System.Drawing.Point(436, 202);
-            this.cbox43.Name = "cbox43";
-            this.cbox43.Size = new System.Drawing.Size(121, 20);
-            this.cbox43.TabIndex = 18;
+            this.cbox23.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox23.FormattingEnabled = true;
+            this.cbox23.Location = new System.Drawing.Point(436, 95);
+            this.cbox23.Name = "cbox23";
+            this.cbox23.Size = new System.Drawing.Size(121, 20);
+            this.cbox23.TabIndex = 10;
             // 
-            // cbox42
+            // cbox22
             // 
-            this.cbox42.FormattingEnabled = true;
-            this.cbox42.Location = new System.Drawing.Point(274, 202);
-            this.cbox42.Name = "cbox42";
-            this.cbox42.Size = new System.Drawing.Size(121, 20);
-            this.cbox42.TabIndex = 17;
+            this.cbox22.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox22.FormattingEnabled = true;
+            this.cbox22.Location = new System.Drawing.Point(274, 95);
+            this.cbox22.Name = "cbox22";
+            this.cbox22.Size = new System.Drawing.Size(121, 20);
+            this.cbox22.TabIndex = 9;
             // 
-            // cbox41
+            // cbox21
             // 
-            this.cbox41.FormattingEnabled = true;
-            this.cbox41.Location = new System.Drawing.Point(122, 202);
-            this.cbox41.Name = "cbox41";
-            this.cbox41.Size = new System.Drawing.Size(121, 20);
-            this.cbox41.TabIndex = 16;
+            this.cbox21.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox21.FormattingEnabled = true;
+            this.cbox21.Location = new System.Drawing.Point(122, 95);
+            this.cbox21.Name = "cbox21";
+            this.cbox21.Size = new System.Drawing.Size(121, 20);
+            this.cbox21.TabIndex = 8;
             // 
-            // lbl_Alg4
+            // lbl_Alg2
             // 
-            this.lbl_Alg4.AutoSize = true;
-            this.lbl_Alg4.Location = new System.Drawing.Point(31, 205);
-            this.lbl_Alg4.Name = "lbl_Alg4";
-            this.lbl_Alg4.Size = new System.Drawing.Size(53, 12);
-            this.lbl_Alg4.TabIndex = 15;
-            this.lbl_Alg4.Text = "多层递阶";
+            this.lbl_Alg2.AutoSize = true;
+            this.lbl_Alg2.Location = new System.Drawing.Point(31, 98);
+            this.lbl_Alg2.Name = "lbl_Alg2";
+            this.lbl_Alg2.Size = new System.Drawing.Size(47, 12);
+            this.lbl_Alg2.TabIndex = 7;
+            this.lbl_Alg2.Text = "RBF算法";
+            // 
+            // lblF3
+            // 
+            this.lblF3.AutoSize = true;
+            this.lblF3.Location = new System.Drawing.Point(480, 7);
+            this.lblF3.Name = "lblF3";
+            this.lblF3.Size = new System.Drawing.Size(35, 12);
+            this.lblF3.TabIndex = 6;
+            this.lblF3.Text = "因素3";
+            // 
+            // lblF2
+            // 
+            this.lblF2.AutoSize = true;
+            this.lblF2.Location = new System.Drawing.Point(305, 7);
+            this.lblF2.Name = "lblF2";
+            this.lblF2.Size = new System.Drawing.Size(35, 12);
+            this.lblF2.TabIndex = 5;
+            this.lblF2.Text = "因素2";
+            // 
+            // lblF1
+            // 
+            this.lblF1.AutoSize = true;
+            this.lblF1.Location = new System.Drawing.Point(169, 7);
+            this.lblF1.Name = "lblF1";
+            this.lblF1.Size = new System.Drawing.Size(35, 12);
+            this.lblF1.TabIndex = 4;
+            this.lblF1.Text = "因素1";
+            // 
+            // cbox13
+            // 
+            this.cbox13.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox13.FormattingEnabled = true;
+            this.cbox13.Location = new System.Drawing.Point(436, 40);
+            this.cbox13.Name = "cbox13";
+            this.cbox13.Size = new System.Drawing.Size(121, 20);
+            this.cbox13.TabIndex = 3;
+            // 
+            // cbox12
+            // 
+            this.cbox12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox12.FormattingEnabled = true;
+            this.cbox12.Location = new System.Drawing.Point(274, 40);
+            this.cbox12.Name = "cbox12";
+            this.cbox12.Size = new System.Drawing.Size(121, 20);
+            this.cbox12.TabIndex = 2;
+            // 
+            // cbox11
+            // 
+            this.cbox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox11.FormattingEnabled = true;
+            this.cbox11.Location = new System.Drawing.Point(122, 40);
+            this.cbox11.Name = "cbox11";
+            this.cbox11.Size = new System.Drawing.Size(121, 20);
+            this.cbox11.TabIndex = 1;
+            // 
+            // lbl_Alg1
+            // 
+            this.lbl_Alg1.AutoSize = true;
+            this.lbl_Alg1.Location = new System.Drawing.Point(31, 43);
+            this.lbl_Alg1.Name = "lbl_Alg1";
+            this.lbl_Alg1.Size = new System.Drawing.Size(41, 12);
+            this.lbl_Alg1.TabIndex = 0;
+            this.lbl_Alg1.Text = "BP算法";
             // 
             // EquipAndAlg
             // 
