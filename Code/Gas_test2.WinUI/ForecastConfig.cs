@@ -40,8 +40,15 @@ namespace Gas_test2.WinUI
 
         private void btn_Start_Click(object sender, EventArgs e)
         {
+            StartForecast();
             System.Type T = typeof(ForecastView);
             EAS.Application.Instance.OpenModule(T);
+
+        }
+
+        private void StartForecast()
+        {
+            ServiceContainer.GetService<IGasBLL>().Forecast();
         }
 
         private void ForecastConfig_Load(object sender, EventArgs e)

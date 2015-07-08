@@ -35,51 +35,78 @@ namespace Gas_test2.BLL
             //调用算法计算
             //数据返回数据库
             //释放线程
+
+            ////////////
+            testAlg();
+            ///////////
+
+        }
+
+        private void testAlg()
+        {
+            //////////////////////////////////
+            //用来存储算法名字的数组  
+            string[] algName = new string[] { "bp", "multi_regression", "rbf" };
+            //用来存储算法名字对应数据的数组  
+            double[][] inputData = new double[3][] { new double[] { 1, 2, 3, 4, 5 }, new double[] { 2, 4, 6, 8, 10 }, new double[] { 10, 20, 30, 40, 50 } };
+            DocumentManager dm = new DocumentManager();
+            for (int i = 0; i < inputData.GetLength(0); i++)   //将设备对应的算法名字以及数据加入队列。
+            {
+                Document doc = new Document(algName[i], inputData[i]);//将文件实例化。
+                dm.AddDocument(doc);    //循环的将所有的文件先加入到队列中。
+                //Console.WriteLine("设备名", doc.algType);
+                Thread.Sleep(new Random().Next(20));//延时20ms
+            }
+            ProcessDocuments.Start(dm);//启动线程
+            Thread.Sleep(2000);
+            Console.WriteLine("END");
+            GC.Collect();
+            /////////////////////////////////
         }
 
 
         //定时启动几个线程
-        private void Thread_Timer_Linshi_Method3()
-        {
-            double[] data1 = new double[] { -0.9602, -0.5770, -0.0729, 0.3771, 0.6405, 0.6600, 0.4609, 0.1336, -0.2013, -0.4344, -0.5000, -0.3930, -0.1647, -.0988, 0.3072, 0.3960, 0.3449, 0.1816, -0.312, -0.2189, -0.3201 };
-            double[] data2 = new double[] { 12, 2, -23, 9, -32, 3, 21, 25, -65, -22, -77, 212, -47, 88, 72, 30, 49, 16, -312, -89, -51 };
-            double[,] outdata1 = new double[21, 1];
-            double[,] outdata2 = new double[21, 1];
+        //private void Thread_Timer_Linshi_Method3()
+        //{
+        //    double[] data1 = new double[] { -0.9602, -0.5770, -0.0729, 0.3771, 0.6405, 0.6600, 0.4609, 0.1336, -0.2013, -0.4344, -0.5000, -0.3930, -0.1647, -.0988, 0.3072, 0.3960, 0.3449, 0.1816, -0.312, -0.2189, -0.3201 };
+        //    double[] data2 = new double[] { 12, 2, -23, 9, -32, 3, 21, 25, -65, -22, -77, 212, -47, 88, 72, 30, 49, 16, -312, -89, -51 };
+        //    double[,] outdata1 = new double[21, 1];
+        //    double[,] outdata2 = new double[21, 1];
 
-            ML1 m1 = new ML1();
-            ML2 m2 = new ML2();
+        //    ML1 m1 = new ML1();
+        //    ML2 m2 = new ML2();
 
-            Parallel.Invoke(
-                () =>
-                {
+        //    Parallel.Invoke(
+        //        () =>
+        //        {
 
-                    outdata1 = m1.ExeAlgorithm(data1, "bp");
-                    foreach (var item1 in outdata1)
-                    {
-                        double num1 = Math.Round(item1, 4);
-                        Console.WriteLine("This is the first threadProgram.");
-                        Console.WriteLine(num1);
-                    }
-                },
+        //            outdata1 = m1.ExeAlgorithm(data1, "bp");
+        //            foreach (var item1 in outdata1)
+        //            {
+        //                double num1 = Math.Round(item1, 4);
+        //                Console.WriteLine("This is the first threadProgram.");
+        //                Console.WriteLine(num1);
+        //            }
+        //        },
 
-                () =>
-                {
-                    outdata2 = m2.ExeAlgorithm3(data2, "dbp");
-                    foreach (var item2 in outdata2)
-                    {
-                        double num2 = Math.Round(item2, 4);
-                        Console.WriteLine("This is the  second threadProgram.");
-                        Console.WriteLine(num2);
-                    }
+        //        () =>
+        //        {
+        //            outdata2 = m2.ExeAlgorithm3(data2, "dbp");
+        //            foreach (var item2 in outdata2)
+        //            {
+        //                double num2 = Math.Round(item2, 4);
+        //                Console.WriteLine("This is the  second threadProgram.");
+        //                Console.WriteLine(num2);
+        //            }
 
-                }
-                );
+        //        }
+        //        );
 
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+        //    GC.Collect();
+        //    GC.WaitForPendingFinalizers();
 
-            Console.WriteLine("The Thread program is end.");
-        }
+        //    Console.WriteLine("The Thread program is end.");
+        //}
 
 
 
