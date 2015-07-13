@@ -54,6 +54,20 @@ namespace Gas_test2.BLL       //单独线程：调用MATLAB的算法线程的代
                     Console.Write(i);
                 }
             }
+            if (algType == "BF_RBF_15")
+            {
+                matlab1.Execute("path(path,'K:\\Users\\kevin\\Desktop\\现有算法\\TestAlg')");
+                matlab1.PutWorkspaceData("a", "base", inputData);
+                matlab1.Execute("b=BF_RBF_15()");// matlab1.Execute("b=funMultiRegression(a)");
+                var b = matlab1.GetVariable("b", "base");
+
+                outputData = (double[,])b;
+                //Console.WriteLine("This is the third algorithm");
+                //foreach (var i in outputData)
+                //{
+                //    Console.Write(i);
+                //}
+            }
 
 
             return outputData;

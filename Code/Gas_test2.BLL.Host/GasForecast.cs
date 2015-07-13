@@ -37,7 +37,7 @@ namespace Gas_test2.BLL
             //释放线程
 
             ////////////
-            testAlg();
+            testAlg2();
             ///////////
 
         }
@@ -54,12 +54,34 @@ namespace Gas_test2.BLL
             {
                 Document doc = new Document(algName[i], inputData[i]);//将文件实例化。
                 dm.AddDocument(doc);    //循环的将所有的文件先加入到队列中。
-                //Console.WriteLine("设备名", doc.algType);
+                
                 Thread.Sleep(new Random().Next(20));//延时20ms
             }
             ProcessDocuments.Start(dm);//启动线程
             Thread.Sleep(2000);
-            Console.WriteLine("END");
+            
+            GC.Collect();
+            /////////////////////////////////
+        }
+
+        private void testAlg2()
+        {
+            //////////////////////////////////
+            //用来存储算法名字的数组  
+            string[] algName = new string[] { "BF_RBF_15"};
+            //用来存储算法名字对应数据的数组  
+            double[][] inputData = new double[1][] { new double[] { 1, 2, 3, 4, 5 }};
+            DocumentManager dm = new DocumentManager();
+            for (int i = 0; i < inputData.GetLength(0); i++)   //将设备对应的算法名字以及数据加入队列。
+            {
+                Document doc = new Document(algName[i], inputData[i]);//将文件实例化。
+                dm.AddDocument(doc);    //循环的将所有的文件先加入到队列中。
+
+                Thread.Sleep(new Random().Next(20));//延时20ms
+            }
+            ProcessDocuments.Start(dm);//启动线程
+            Thread.Sleep(2000);
+
             GC.Collect();
             /////////////////////////////////
         }

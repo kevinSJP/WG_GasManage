@@ -26,11 +26,11 @@ namespace Gas_test2.BLL
                     if (documentManager.IsDoctumentAvailable)  //如果队列不是空队列就执行下面的代码
                     {
                         Document doc = documentManager.GetDocument();  //读取队列中的文件
-                        //Console.WriteLine("线程 目录{0}", doc.algType);
+                        
                         string algType = doc.algType;
                         double[] inputData = doc.inputData;
-                        method.ExeAlgorithm(algType, inputData);
-                        Console.WriteLine();
+                        double[,] result= method.ExeAlgorithm(algType, inputData);
+                        //Console.WriteLine();
                     }
                     Thread.Sleep(20);//Thread.Sleep(new Random().Next(20));队列中相邻的两个文件的读取间隔20ms.
                 }

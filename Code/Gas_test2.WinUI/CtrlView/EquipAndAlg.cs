@@ -425,6 +425,7 @@ namespace Gas_test2.WinUI.CtrlView
                      Console.WriteLine("添加异常" + ex.Message);
                  }
 
+                Factor = "";
                 Factor = cbox21.Text + ";" + cbox22.Text + ";" + cbox23.Text + ";";   
                 try
                 {

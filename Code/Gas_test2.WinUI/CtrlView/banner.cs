@@ -65,7 +65,8 @@ namespace Gas_test2.WinUI.CtrlView
             {
                 if (NoUD.Value != 0)
                 {
-                    ServiceContainer.GetService<IGasDAL>().UpdateData("GasometerType", "GasometerNum", bNum.ToString(), "GasometerName", bName);
+                    string a = this.bName;
+                    ServiceContainer.GetService<IGasDAL>().UpdateData("GasometerType", "GasometerNum", bNum.ToString(), "GasometerName", a);
                 }
             }
             catch(Exception ex)
